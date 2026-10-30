@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340" role="img" aria-label="RWA Real Estate Tokenization — identity is enforced inside the token · rent split pro rata, each holder claims">
+<rect width="600" height="340" rx="6" fill="#0a0a0b" stroke="#222228"/>
+<text x="24" y="30" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8f8e88" text-anchor="start" font-weight="400" letter-spacing="1.6">BLOCKCHAIN IMPLEMENTATION</text>
+<text x="576" y="30" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93" text-anchor="end" font-weight="400">Solidity · Hardhat · ERC-3643-style</text>
+<text x="23" y="60" font-family="Newsreader,Georgia,Times New Roman,serif" font-size="24" fill="#ecebe6" text-anchor="start" font-weight="400">RWA Real Estate Tokenization</text>
+<line x1="24" y1="74" x2="576" y2="74" stroke="#222228"/>
+<line x1="24" y1="306" x2="576" y2="306" stroke="#222228"/>
+<text x="24" y="326" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#8a8a93" text-anchor="start" font-weight="400">identity is enforced inside the token · rent split pro rata, each holder claims</text>
+<path d="M32 118L92 88L152 118Z" fill="#17171c" stroke="#34343b" stroke-width="1.2"/>
+<rect x="36" y="118" width="112" height="176" rx="2" fill="#111114" stroke="#34343b" stroke-width="1.2"></rect>
+<rect x="48" y="132" width="24" height="26" rx="1" fill="#9bb6d8" opacity=".75"></rect>
+<rect x="80" y="132" width="24" height="26" rx="1" fill="#9bb6d8" opacity=".75"></rect>
+<rect x="112" y="132" width="24" height="26" rx="1" fill="#9bb6d8" opacity=".75"></rect>
+<rect x="48" y="170" width="24" height="26" rx="1" fill="#9bb6d8" opacity=".75"></rect>
+<rect x="80" y="170" width="24" height="26" rx="1" fill="#9bb6d8" opacity=".75"></rect>
+<rect x="112" y="170" width="24" height="26" rx="1" fill="#9bb6d8" opacity=".75"><animate attributeName="fill" values="#9bb6d8;#9bb6d8;#e3c07a;#e3c07a;#9bb6d8;#9bb6d8" keyTimes="0.000;0.260;0.270;0.950;0.960;1.000" dur="12s" repeatCount="indefinite"/></rect>
+<rect x="48" y="208" width="24" height="26" rx="1" fill="#8cc9a1" opacity=".75"></rect>
+<rect x="80" y="208" width="24" height="26" rx="1" fill="#8cc9a1" opacity=".75"></rect>
+<rect x="112" y="208" width="24" height="26" rx="1" fill="#8cc9a1" opacity=".75"></rect>
+<rect x="48" y="246" width="24" height="26" rx="1" fill="#8cc9a1" opacity=".75"></rect>
+<rect x="80" y="246" width="24" height="26" rx="1" fill="#e3c07a" opacity=".75"></rect>
+<rect x="112" y="246" width="24" height="26" rx="1" fill="#e3c07a" opacity=".75"></rect>
+<text x="92" y="298" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="9.5" fill="#8a8a93" text-anchor="middle" font-weight="400">PropertyToken · 12 units</text>
+<rect x="176" y="88" width="150" height="96" rx="2" fill="#141b24" stroke="#9bb6d8" stroke-width="1.2"></rect>
+<text x="188" y="106" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#ecebe6" text-anchor="start" font-weight="400">IdentityRegistry</text>
+<text x="188" y="122" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="9" fill="#8a8a93" text-anchor="start" font-weight="400">on-chain KYC allowlist</text>
+<text x="196" y="154" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#ecebe6" text-anchor="middle" font-weight="700">A</text>
+<path d="M190 168l4 4 8-9" fill="none" stroke="#8cc9a1" stroke-width="1.8" stroke-linecap="square"/>
+<text x="228" y="154" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#ecebe6" text-anchor="middle" font-weight="700">B</text>
+<path d="M222 168l4 4 8-9" fill="none" stroke="#8cc9a1" stroke-width="1.8" stroke-linecap="square"/>
+<text x="260" y="154" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#ecebe6" text-anchor="middle" font-weight="700">C</text>
+<path d="M254 168l4 4 8-9" fill="none" stroke="#8cc9a1" stroke-width="1.8" stroke-linecap="square"/>
+<text x="292" y="154" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#ecebe6" text-anchor="middle" font-weight="700">D</text>
+<path d="M288 168l8 8M296 168l-8 8" stroke="#f0907a" stroke-width="1.8"/>
+<rect x="176" y="200" width="150" height="94" rx="2" fill="#141b24" stroke="#9bb6d8" stroke-width="1.2"></rect>
+<text x="188" y="218" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#ecebe6" text-anchor="start" font-weight="400">RentalDistributor</text>
+<text x="188" y="234" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="9" fill="#8a8a93" text-anchor="start" font-weight="400">pro-rata, holders claim</text>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.000;0.535;0.550;0.950;0.965;1.000" dur="12s" repeatCount="indefinite"/><text x="188" y="262" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#9bb6d8" text-anchor="start" font-weight="400">rent in: 1,200 USDC</text></g>
+<text x="352" y="106" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8f8e88" text-anchor="start" font-weight="400" letter-spacing="1">HOLDER</text>
+<text x="470" y="106" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8f8e88" text-anchor="end" font-weight="400" letter-spacing="1">UNITS</text>
+<text x="576" y="106" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8f8e88" text-anchor="end" font-weight="400" letter-spacing="1">CLAIM</text>
+<rect x="352" y="123" width="10" height="14" fill="#9bb6d8" opacity=".8"/>
+<text x="372" y="134" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#a6a59f" text-anchor="start" font-weight="400">holder A</text>
+<g><animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0.000;0.260;0.270;0.950;0.960;1.000" dur="12s" repeatCount="indefinite"/><text x="470" y="134" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#ecebe6" text-anchor="end" font-weight="400">6</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.000;0.255;0.270;0.950;0.965;1.000" dur="12s" repeatCount="indefinite"/><text x="470" y="134" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#ecebe6" text-anchor="end" font-weight="700">5</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.000;0.685;0.700;0.950;0.965;1.000" dur="12s" repeatCount="indefinite"/><text x="576" y="134" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#9bb6d8" text-anchor="end" font-weight="400">500</text></g>
+<rect x="352" y="157" width="10" height="14" fill="#8cc9a1" opacity=".8"/>
+<text x="372" y="168" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#a6a59f" text-anchor="start" font-weight="400">holder B</text>
+<text x="470" y="168" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#ecebe6" text-anchor="end" font-weight="400">4</text>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.000;0.715;0.730;0.950;0.965;1.000" dur="12s" repeatCount="indefinite"/><text x="576" y="168" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8cc9a1" text-anchor="end" font-weight="400">400</text></g>
+<rect x="352" y="191" width="10" height="14" fill="#e3c07a" opacity=".8"/>
+<text x="372" y="202" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#a6a59f" text-anchor="start" font-weight="400">holder C</text>
+<g><animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0.000;0.260;0.270;0.950;0.960;1.000" dur="12s" repeatCount="indefinite"/><text x="470" y="202" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#ecebe6" text-anchor="end" font-weight="400">2</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.000;0.255;0.270;0.950;0.965;1.000" dur="12s" repeatCount="indefinite"/><text x="470" y="202" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#ecebe6" text-anchor="end" font-weight="700">3</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.000;0.745;0.760;0.950;0.965;1.000" dur="12s" repeatCount="indefinite"/><text x="576" y="202" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#e3c07a" text-anchor="end" font-weight="400">300</text></g>
+<rect x="352" y="225" width="10" height="14" fill="#8a8a93" opacity=".8"/>
+<text x="372" y="236" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#a6a59f" text-anchor="start" font-weight="400">holder D</text>
+<text x="470" y="236" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#ecebe6" text-anchor="end" font-weight="400">0</text>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.000;0.775;0.790;0.950;0.965;1.000" dur="12s" repeatCount="indefinite"/><text x="576" y="236" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93" text-anchor="end" font-weight="400">—</text></g>
+<g opacity="0"><animateMotion dur="12s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.080;0.260;1" path="M372 134L252 150L372 202"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.000;0.075;0.080;0.260;0.265;1.000" dur="12s" repeatCount="indefinite"/><rect x="-27.200000000000003" y="-10" width="54.400000000000006" height="20" rx="2" fill="#17171c" stroke="#a6a59f" stroke-width="1.2"></rect><text x="0" y="4" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#a6a59f" text-anchor="middle" font-weight="400">1 unit</text></g>
+<g opacity="0"><animateMotion dur="12s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.320;0.420;1" path="M372 134L292 160"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.000;0.305;0.320;0.500;0.515;1.000" dur="12s" repeatCount="indefinite"/><rect x="-40.0" y="-10" width="80.0" height="20" rx="2" fill="#0a0a0b" stroke="#f0907a" stroke-width="1.2"></rect><text x="0" y="4" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10.5" fill="#f0907a" text-anchor="middle" font-weight="400">1 unit → D</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.000;0.405;0.420;0.520;0.535;1.000" dur="12s" repeatCount="indefinite"/><text x="470" y="290" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="9.5" fill="#f0907a" text-anchor="middle" font-weight="400">rejected by the token contract</text></g>
+<circle r="3.5" fill="#9bb6d8" opacity="0"><animateMotion dur="12s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.600;0.700;1" path="M326 262L560 130"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.000;0.595;0.600;0.700;0.705;1.000" dur="12s" repeatCount="indefinite"/></circle>
+<circle r="3.5" fill="#8cc9a1" opacity="0"><animateMotion dur="12s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.620;0.720;1" path="M326 262L560 164"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.000;0.615;0.620;0.720;0.725;1.000" dur="12s" repeatCount="indefinite"/></circle>
+<circle r="3.5" fill="#e3c07a" opacity="0"><animateMotion dur="12s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.640;0.740;1" path="M326 262L560 198"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.000;0.635;0.640;0.740;0.745;1.000" dur="12s" repeatCount="indefinite"/></circle>
+</svg>

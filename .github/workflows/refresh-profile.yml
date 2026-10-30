@@ -1,0 +1,45 @@
+# 每 6 小時重抓資料、重畫 assets/live/ 的 SVG，有變動才 commit
+name: refresh-profile
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"     # UTC 每 6 小時（台北時間 02:17 / 08:17 / 14:17 / 20:17）
+  workflow_dispatch:            # 可在 Actions 頁面手動按 Run
+  push:
+    branches: [main]
+    paths: ["scripts/**", ".github/workflows/**"]
+
+permissions:
+  contents: write               # 讓 bot 可以 push 更新後的 SVG
+
+concurrency:
+  group: refresh-profile
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate live SVGs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # 用來讀 contributions（GraphQL）
+          GH_USER: zuemen
+        run: python scripts/generate.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/live data
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git commit -m "chore: refresh live profile assets"
+            git push
+          fi

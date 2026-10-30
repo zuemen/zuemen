@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360" role="img" aria-label="quantum-finance — BTC return distribution loaded into 3 qubits (Grover–Rudolph)">
+<style>@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<rect width="900" height="360" rx="6" fill="#0a0a0b" stroke="#222228"/>
+<path d="M6 0H894A6 6 0 0 1 900 6V34H0V6A6 6 0 0 1 6 0z" fill="#111114"/>
+<circle cx="20" cy="17" r="5" fill="#f0907a"/><circle cx="38" cy="17" r="5" fill="#e3c07a"/><circle cx="56" cy="17" r="5" fill="#8cc9a1"/>
+<text x="80" y="22" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#8a8a93">quantum-finance — BTC return distribution loaded into 3 qubits (Grover–Rudolph)</text>
+<text x="26" y="100" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#8a8a93">q0 |0⟩</text>
+<line x1="80" y1="96" x2="420" y2="96" stroke="#222228" stroke-width="2"/>
+<text x="26" y="160" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#8a8a93">q1 |0⟩</text>
+<line x1="80" y1="156" x2="420" y2="156" stroke="#222228" stroke-width="2"/>
+<text x="26" y="220" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#8a8a93">q2 |0⟩</text>
+<line x1="80" y1="216" x2="420" y2="216" stroke="#222228" stroke-width="2"/>
+<rect x="95" y="82" width="34" height="28" rx="6" fill="#111114" stroke="#b4a6d6" stroke-width="2"><animate attributeName="fill" values="#111114;#111114;#3b2a5c;#111114;#111114" keyTimes="0;0.04;0.08;0.14;1" dur="5s" repeatCount="indefinite"/></rect><text x="112" y="100" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#ecebe6">Ry</text>
+<line x1="176" y1="96" x2="176" y2="156" stroke="#b4a6d6" stroke-width="2"/>
+<circle cx="176" cy="96" r="5" fill="#0a0a0b" stroke="#b4a6d6" stroke-width="2"/>
+<rect x="159" y="142" width="34" height="28" rx="6" fill="#111114" stroke="#b4a6d6" stroke-width="2"><animate attributeName="fill" values="#111114;#111114;#3b2a5c;#111114;#111114" keyTimes="0;0.19;0.23;0.29;1" dur="5s" repeatCount="indefinite"/></rect><text x="176" y="160" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#ecebe6">Ry</text>
+<line x1="226" y1="96" x2="226" y2="156" stroke="#b4a6d6" stroke-width="2"/>
+<circle cx="226" cy="96" r="5" fill="#b4a6d6" stroke="#b4a6d6" stroke-width="2"/>
+<rect x="209" y="142" width="34" height="28" rx="6" fill="#111114" stroke="#b4a6d6" stroke-width="2"><animate attributeName="fill" values="#111114;#111114;#3b2a5c;#111114;#111114" keyTimes="0;0.30;0.34;0.40;1" dur="5s" repeatCount="indefinite"/></rect><text x="226" y="160" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#ecebe6">Ry</text>
+<line x1="276" y1="96" x2="276" y2="216" stroke="#b4a6d6" stroke-width="2"/>
+<circle cx="276" cy="96" r="5" fill="#0a0a0b" stroke="#b4a6d6" stroke-width="2"/>
+<circle cx="276" cy="156" r="5" fill="#0a0a0b" stroke="#b4a6d6" stroke-width="2"/>
+<rect x="262" y="202" width="28" height="28" rx="6" fill="#111114" stroke="#b4a6d6" stroke-width="2"><animate attributeName="fill" values="#111114;#111114;#3b2a5c;#111114;#111114" keyTimes="0;0.42;0.46;0.52;1" dur="5s" repeatCount="indefinite"/></rect><text x="276" y="220" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="9" fill="#ecebe6">Ry</text>
+<line x1="312" y1="96" x2="312" y2="216" stroke="#b4a6d6" stroke-width="2"/>
+<circle cx="312" cy="96" r="5" fill="#0a0a0b" stroke="#b4a6d6" stroke-width="2"/>
+<circle cx="312" cy="156" r="5" fill="#b4a6d6" stroke="#b4a6d6" stroke-width="2"/>
+<rect x="298" y="202" width="28" height="28" rx="6" fill="#111114" stroke="#b4a6d6" stroke-width="2"><animate attributeName="fill" values="#111114;#111114;#3b2a5c;#111114;#111114" keyTimes="0;0.51;0.55;0.61;1" dur="5s" repeatCount="indefinite"/></rect><text x="312" y="220" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="9" fill="#ecebe6">Ry</text>
+<line x1="348" y1="96" x2="348" y2="216" stroke="#b4a6d6" stroke-width="2"/>
+<circle cx="348" cy="96" r="5" fill="#b4a6d6" stroke="#b4a6d6" stroke-width="2"/>
+<circle cx="348" cy="156" r="5" fill="#0a0a0b" stroke="#b4a6d6" stroke-width="2"/>
+<rect x="334" y="202" width="28" height="28" rx="6" fill="#111114" stroke="#b4a6d6" stroke-width="2"><animate attributeName="fill" values="#111114;#111114;#3b2a5c;#111114;#111114" keyTimes="0;0.59;0.63;0.69;1" dur="5s" repeatCount="indefinite"/></rect><text x="348" y="220" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="9" fill="#ecebe6">Ry</text>
+<line x1="384" y1="96" x2="384" y2="216" stroke="#b4a6d6" stroke-width="2"/>
+<circle cx="384" cy="96" r="5" fill="#b4a6d6" stroke="#b4a6d6" stroke-width="2"/>
+<circle cx="384" cy="156" r="5" fill="#b4a6d6" stroke="#b4a6d6" stroke-width="2"/>
+<rect x="370" y="202" width="28" height="28" rx="6" fill="#111114" stroke="#b4a6d6" stroke-width="2"><animate attributeName="fill" values="#111114;#111114;#3b2a5c;#111114;#111114" keyTimes="0;0.68;0.72;0.78;1" dur="5s" repeatCount="indefinite"/></rect><text x="384" y="220" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="9" fill="#ecebe6">Ry</text>
+<rect x="404" y="83" width="30" height="26" rx="5" fill="#111114" stroke="#8a8a93"/><path d="M409 102a10 10 0 0 1 20 0" fill="none" stroke="#8a8a93" stroke-width="1.6"/><line x1="419" y1="102" x2="427" y2="90" stroke="#8a8a93" stroke-width="1.6"/>
+<rect x="404" y="143" width="30" height="26" rx="5" fill="#111114" stroke="#8a8a93"/><path d="M409 162a10 10 0 0 1 20 0" fill="none" stroke="#8a8a93" stroke-width="1.6"/><line x1="419" y1="162" x2="427" y2="150" stroke="#8a8a93" stroke-width="1.6"/>
+<rect x="404" y="203" width="30" height="26" rx="5" fill="#111114" stroke="#8a8a93"/><path d="M409 222a10 10 0 0 1 20 0" fill="none" stroke="#8a8a93" stroke-width="1.6"/><line x1="419" y1="222" x2="427" y2="210" stroke="#8a8a93" stroke-width="1.6"/>
+<circle cx="80" cy="96" r="4" fill="#9bb6d8"><animate attributeName="cx" values="80;420;420" keyTimes="0;.8;1" dur="5s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;1;0" keyTimes="0;.8;.82" dur="5s" repeatCount="indefinite"/></circle>
+<circle cx="80" cy="156" r="4" fill="#9bb6d8"><animate attributeName="cx" values="80;420;420" keyTimes="0;.8;1" dur="5s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;1;0" keyTimes="0;.8;.82" dur="5s" repeatCount="indefinite"/></circle>
+<circle cx="80" cy="216" r="4" fill="#9bb6d8"><animate attributeName="cx" values="80;420;420" keyTimes="0;.8;1" dur="5s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;1;0" keyTimes="0;.8;.82" dur="5s" repeatCount="indefinite"/></circle>
+<text x="26" y="262" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">θ₀ = 0.86</text>
+<text x="26" y="280" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">θ₁ = 2.26, 1.23</text>
+<text x="26" y="298" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">θ₂ = 2.03, 1.66, 0.00, 1.71</text>
+<text x="26" y="320" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8cc9a1">fidelity ⟨ψ|target⟩² = 1.0000</text>
+<text x="476" y="60" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">P(|i⟩) = |amplitude|²  ·  120 daily log-returns</text>
+<line x1="476" y1="260" x2="872" y2="260" stroke="#222228" stroke-width="2"/>
+<rect x="482.0" y="241.1" width="37.5" height="18.9" rx="4" fill="#f0907a" opacity=".85"><animate attributeName="height" values="0;18.9;18.9;0" keyTimes="0;.3;.9;1" dur="5s" repeatCount="indefinite"/><animate attributeName="y" values="260;241.1;241.1;260" keyTimes="0;.3;.9;1" dur="5s" repeatCount="indefinite"/></rect>
+<text x="500.8" y="276" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">|000⟩</text>
+<text x="500.8" y="235.1" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#ecebe6">0.04</text>
+<rect x="531.5" y="211.0" width="37.5" height="49.0" rx="4" fill="#9bb6d8" opacity=".85"><animate attributeName="height" values="0;49.0;49.0;0" keyTimes="0;.3;.9;1" dur="5s" repeatCount="indefinite"/><animate attributeName="y" values="260;211.0;211.0;260" keyTimes="0;.3;.9;1" dur="5s" repeatCount="indefinite"/></rect>
+<text x="550.2" y="276" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">|001⟩</text>
+<text x="550.2" y="205.0" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#ecebe6">0.11</text>
+<rect x="581.0" y="120.4" width="37.5" height="139.6" rx="4" fill="#9bb6d8" opacity=".85"><animate attributeName="height" values="0;139.6;139.6;0" keyTimes="0;.3;.9;1" dur="5s" repeatCount="indefinite"/><animate attributeName="y" values="260;120.4;120.4;260" keyTimes="0;.3;.9;1" dur="5s" repeatCount="indefinite"/></rect>
+<text x="599.8" y="276" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">|010⟩</text>
+<text x="599.8" y="114.4" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#ecebe6">0.31</text>
+<rect x="630.5" y="94.0" width="37.5" height="166.0" rx="4" fill="#9bb6d8" opacity=".85"><animate attributeName="height" values="0;166.0;166.0;0" keyTimes="0;.3;.9;1" dur="5s" repeatCount="indefinite"/><animate attributeName="y" values="260;94.0;94.0;260" keyTimes="0;.3;.9;1" dur="5s" repeatCount="indefinite"/></rect>
+<text x="649.2" y="276" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">|011⟩</text>
+<text x="649.2" y="88.0" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#ecebe6">0.37</text>
+<rect x="680.0" y="207.2" width="37.5" height="52.8" rx="4" fill="#9bb6d8" opacity=".85"><animate attributeName="height" values="0;52.8;52.8;0" keyTimes="0;.3;.9;1" dur="5s" repeatCount="indefinite"/><animate attributeName="y" values="260;207.2;207.2;260" keyTimes="0;.3;.9;1" dur="5s" repeatCount="indefinite"/></rect>
+<text x="698.8" y="276" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">|100⟩</text>
+<text x="698.8" y="201.2" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#ecebe6">0.12</text>
+<rect x="729.5" y="260.0" width="37.5" height="0.0" rx="4" fill="#9bb6d8" opacity=".85"><animate attributeName="height" values="0;0.0;0.0;0" keyTimes="0;.3;.9;1" dur="5s" repeatCount="indefinite"/><animate attributeName="y" values="260;260.0;260.0;260" keyTimes="0;.3;.9;1" dur="5s" repeatCount="indefinite"/></rect>
+<text x="748.2" y="276" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">|101⟩</text>
+<text x="748.2" y="254.0" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#ecebe6">0.00</text>
+<rect x="779.0" y="248.7" width="37.5" height="11.3" rx="4" fill="#9bb6d8" opacity=".85"><animate attributeName="height" values="0;11.3;11.3;0" keyTimes="0;.3;.9;1" dur="5s" repeatCount="indefinite"/><animate attributeName="y" values="260;248.7;248.7;260" keyTimes="0;.3;.9;1" dur="5s" repeatCount="indefinite"/></rect>
+<text x="797.8" y="276" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">|110⟩</text>
+<text x="797.8" y="242.7" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#ecebe6">0.03</text>
+<rect x="828.5" y="244.9" width="37.5" height="15.1" rx="4" fill="#9bb6d8" opacity=".85"><animate attributeName="height" values="0;15.1;15.1;0" keyTimes="0;.3;.9;1" dur="5s" repeatCount="indefinite"/><animate attributeName="y" values="260;244.9;244.9;260" keyTimes="0;.3;.9;1" dur="5s" repeatCount="indefinite"/></rect>
+<text x="847.2" y="276" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">|111⟩</text>
+<text x="847.2" y="238.9" text-anchor="middle" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#ecebe6">0.03</text>
+<text x="476" y="294" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">-4.3%</text>
+<text x="872" y="294" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">+7.0%</text>
+<text x="476" y="316" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" fill="#ecebe6">BTC $77,573  ·  1-day VaR(95%) <tspan fill="#f0907a" font-weight="700">2.68%</tspan></text>
+<text x="476" y="334" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">tail mass in |ψ⟩ = 0.042 → the quantity QAE estimates</text>
+<text x="884" y="348" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">source CoinGecko · updated 2026-10-30 17:36 UTC+8 · live</text>
+</svg>
