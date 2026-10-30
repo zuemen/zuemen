@@ -74,21 +74,25 @@ def fetch_contrib():
 
 
 def fetch_commits():
-    """GitHub REST：最近的公開 push，取最新 5 筆 commit 當作「mempool」"""
+    """GitHub REST：取最近有推送的公開 repo，各拿最新 commit，組成「mempool」
+    （事件 API 已不再附 commit 內容，所以改讀 repos → commits）"""
     h = {"Authorization": f"bearer {TOKEN}"} if TOKEN else {}
-    events = http_json(f"https://api.github.com/users/{USER}/events/public?per_page=60", headers=h)
+    repos = http_json(f"https://api.github.com/users/{USER}/repos?sort=pushed&per_page=8&type=owner", headers=h)
     out = []
-    for e in events:
-        if e.get("type") != "PushEvent":
+    for r in repos:
+        if r.get("fork") or r["name"].lower() == USER.lower():   # 略過 fork 與個人頁 repo 本身
             continue
-        repo = e["repo"]["name"].split("/")[-1]
-        for c in reversed(e.get("payload", {}).get("commits", [])):
-            out.append({"repo": repo, "msg": c["message"].splitlines()[0], "sha": c["sha"][:7]})
+        try:
+            cs = http_json(f"https://api.github.com/repos/{USER}/{r['name']}/commits?per_page=1", headers=h)
+        except Exception:
+            continue
+        if cs:
+            out.append({"repo": r["name"], "msg": cs[0]["commit"]["message"].splitlines()[0], "sha": cs[0]["sha"][:7]})
         if len(out) >= 5:
             break
     if not out:
-        raise RuntimeError("沒有公開 push 事件")
-    return out[:5]
+        raise RuntimeError("找不到最近的公開 commit")
+    return out
 
 
 def fetch_btc():
