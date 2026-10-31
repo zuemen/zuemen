@@ -6,7 +6,7 @@
 <text x="80" y="22" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="13" fill="#8a8a93">chain-of-commits — weekly blocks mined from github.com/zuemen</text>
 <rect x="24" y="58" width="118" height="132" rx="12" fill="#111114" stroke="#9bb6d8" stroke-width="2"></rect>
 <rect x="24" y="58" width="118" height="26" rx="12" fill="#9bb6d8" opacity=".18"/>
-<text x="34" y="76" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" font-weight="700" fill="#9bb6d8">#47</text>
+<text x="34" y="76" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" font-weight="700" fill="#9bb6d8">#48</text>
 <text x="132" y="76" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">09-20</text>
 <text x="34" y="106" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">txs</text>
 <text x="132" y="106" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="16" font-weight="700" fill="#ecebe6">94</text>
@@ -22,7 +22,7 @@
 <g fill="none" stroke="#222228" stroke-width="3"><rect x="144" y="116" width="16" height="12" rx="6"/><rect x="152" y="116" width="16" height="12" rx="6"/></g>
 <rect x="170" y="58" width="118" height="132" rx="12" fill="#111114" stroke="#9bb6d8" stroke-width="2"></rect>
 <rect x="170" y="58" width="118" height="26" rx="12" fill="#9bb6d8" opacity=".18"/>
-<text x="180" y="76" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" font-weight="700" fill="#9bb6d8">#48</text>
+<text x="180" y="76" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" font-weight="700" fill="#9bb6d8">#49</text>
 <text x="278" y="76" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">09-27</text>
 <text x="180" y="106" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">txs</text>
 <text x="278" y="106" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="16" font-weight="700" fill="#ecebe6">314</text>
@@ -38,7 +38,7 @@
 <g fill="none" stroke="#222228" stroke-width="3"><rect x="290" y="116" width="16" height="12" rx="6"/><rect x="298" y="116" width="16" height="12" rx="6"/></g>
 <rect x="316" y="58" width="118" height="132" rx="12" fill="#111114" stroke="#9bb6d8" stroke-width="2"></rect>
 <rect x="316" y="58" width="118" height="26" rx="12" fill="#9bb6d8" opacity=".18"/>
-<text x="326" y="76" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" font-weight="700" fill="#9bb6d8">#49</text>
+<text x="326" y="76" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" font-weight="700" fill="#9bb6d8">#50</text>
 <text x="424" y="76" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">10-04</text>
 <text x="326" y="106" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">txs</text>
 <text x="424" y="106" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="16" font-weight="700" fill="#ecebe6">417</text>
@@ -54,7 +54,7 @@
 <g fill="none" stroke="#222228" stroke-width="3"><rect x="436" y="116" width="16" height="12" rx="6"/><rect x="444" y="116" width="16" height="12" rx="6"/></g>
 <rect x="462" y="58" width="118" height="132" rx="12" fill="#111114" stroke="#9bb6d8" stroke-width="2"></rect>
 <rect x="462" y="58" width="118" height="26" rx="12" fill="#9bb6d8" opacity=".18"/>
-<text x="472" y="76" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" font-weight="700" fill="#9bb6d8">#50</text>
+<text x="472" y="76" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" font-weight="700" fill="#9bb6d8">#51</text>
 <text x="570" y="76" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">10-11</text>
 <text x="472" y="106" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">txs</text>
 <text x="570" y="106" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="16" font-weight="700" fill="#ecebe6">34</text>
@@ -70,7 +70,7 @@
 <g fill="none" stroke="#222228" stroke-width="3"><rect x="582" y="116" width="16" height="12" rx="6"/><rect x="590" y="116" width="16" height="12" rx="6"/></g>
 <rect x="608" y="58" width="118" height="132" rx="12" fill="#111114" stroke="#9bb6d8" stroke-width="2"></rect>
 <rect x="608" y="58" width="118" height="26" rx="12" fill="#9bb6d8" opacity=".18"/>
-<text x="618" y="76" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" font-weight="700" fill="#9bb6d8">#51</text>
+<text x="618" y="76" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" font-weight="700" fill="#9bb6d8">#52</text>
 <text x="716" y="76" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">10-18</text>
 <text x="618" y="106" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">txs</text>
 <text x="716" y="106" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="16" font-weight="700" fill="#ecebe6">20</text>
@@ -86,7 +86,7 @@
 <g fill="none" stroke="#222228" stroke-width="3"><rect x="728" y="116" width="16" height="12" rx="6"/><rect x="736" y="116" width="16" height="12" rx="6"/></g>
 <rect x="754" y="58" width="118" height="132" rx="12" fill="#111114" stroke="#e3c07a" stroke-width="2" stroke-dasharray="8 6"><animate attributeName="stroke-dashoffset" values="0;-28" dur="1.2s" repeatCount="indefinite"/></rect>
 <rect x="754" y="58" width="118" height="26" rx="12" fill="#e3c07a" opacity=".18"/>
-<text x="764" y="76" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" font-weight="700" fill="#e3c07a">#52</text>
+<text x="764" y="76" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" font-weight="700" fill="#e3c07a">#53</text>
 <text x="862" y="76" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">10-25</text>
 <text x="764" y="106" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">txs</text>
 <text x="862" y="106" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="16" font-weight="700" fill="#ecebe6">44</text>
@@ -96,6 +96,7 @@
 <rect x="806" y="118" width="11" height="11" rx="2" fill="#8cc9a1" opacity="0.45"/>
 <rect x="820" y="118" width="11" height="11" rx="2" fill="#8cc9a1" opacity="0.56"/>
 <rect x="834" y="118" width="11" height="11" rx="2" fill="#8cc9a1" opacity="0.12"/>
+<rect x="848" y="118" width="11" height="11" rx="2" fill="#8cc9a1" opacity="0.12"/>
 <text x="764" y="150" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">prev 0x608d57a6</text>
 <text x="764" y="168" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#e3c07a" opacity="0">nonce 0xf1f9fc3a<animate attributeName="opacity" values="0;1;0;0" keyTimes="0;0.01;0.15;1" dur="4s" repeatCount="indefinite"/></text>
 <text x="764" y="168" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#e3c07a" opacity="0">nonce 0xa6a2a8a9<animate attributeName="opacity" values="0;1;0;0" keyTimes="0;0.16;0.30;1" dur="4s" repeatCount="indefinite"/></text>
@@ -114,6 +115,6 @@
 <circle r="4" fill="#8cc9a1" opacity="0"><animateMotion dur="6s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.46;0.66;1" path="M414 306 Q 753.0 228 813.0 190"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.45;0.46;0.66;0.67;1" dur="6s" repeatCount="indefinite"/></circle>
 <g><text x="24" y="328" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#ecebe6"><tspan fill="#8cc9a1">d656f5d</tspan> Global_TrustDriv · chore: keep AI prompt note…</text><animate attributeName="opacity" values="1;1;.25;.25;1" keyTimes="0;0.58;0.78;.95;1" dur="6s" repeatCount="indefinite"/></g>
 <circle r="4" fill="#8cc9a1" opacity="0"><animateMotion dur="6s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.58;0.78;1" path="M414 324 Q 753.0 228 813.0 190"/><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.57;0.58;0.78;0.79;1" dur="6s" repeatCount="indefinite"/></circle>
-<text x="876" y="240" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">1y contributions <tspan fill="#ecebe6" font-weight="700">2924</tspan> · streak <tspan fill="#ecebe6" font-weight="700">5d</tspan></text>
-<text x="884" y="318" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">updated 2026-10-31 06:25 UTC+8 · live</text>
+<text x="876" y="240" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">1y contributions <tspan fill="#ecebe6" font-weight="700">2924</tspan> · streak <tspan fill="#ecebe6" font-weight="700">0d</tspan></text>
+<text x="884" y="318" text-anchor="end" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="10" fill="#8a8a93">updated 2026-10-31 13:51 UTC+8 · live</text>
 </svg>
