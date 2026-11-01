@@ -586,7 +586,7 @@ class QMLSimulation(ProjectScene):
         res = VGroup(mono("same split · seed 42", 18, TEXT2),
                      mono("accuracy printed when run", 18, TEXT2),
                      mono("no outputs saved in the notebook", 18, WARN)).arrange(DOWN, aligned_edge=LEFT, buff=0.3)
-        res.move_to(panel.get_center(), aligned_edge=None)
+        res.move_to(panel.get_center())
         self.play(FadeIn(h4), run_time=0.3)
         for k in range(4):
             acc = mono("acc —", 16, MUTED).next_to(cells[k][1], DOWN, 0.08)
