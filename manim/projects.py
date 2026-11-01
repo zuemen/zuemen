@@ -3,7 +3,7 @@
 
 每個 Scene 對應 zuemen.net/projects 上的一個專案，依專案描述演出系統的實際運作方式。
 同一份程式輸出兩種格式（見 manim/render.sh）：
-  - GitHub README：640px GIF
+  - GitHub README：720px GIF
   - zuemen.net：1080p MP4 + WebP 封面 + 循環預覽
 
 單獨預覽一個場景：
@@ -24,21 +24,25 @@ class ChainLens(ProjectScene):
 
     def construct(self):
         cy = (self.y_top + self.y_bot) / 2
-        # ── 情境 07：一筆出金申請，地址本身看起來乾淨 ──
+        # ── 情境 07：上游匯入 OTC 出金地址，再一進一出經兩個中繼到 TRelay03（scenario.py:311–313）──
         L = self.x_left
         src = [np.array([L + 0.35, cy + d, 0]) for d in (1.4, 0, -1.4)]
-        hub = np.array([L + 2.35, cy, 0])
-        hop = [np.array([L + 4.1, cy + d, 0]) for d in (0.9, -0.9)]
+        hub = np.array([L + 1.9, cy, 0])
+        hop = [np.array([L + 3.2, cy, 0]), np.array([L + 4.5, cy, 0])]
         dst = np.array([L + 5.9, cy, 0])
-        edges = [Line(s, hub) for s in src] + [Line(hub, h) for h in hop] + [Line(h, dst) for h in hop]
+        chain = [hub] + hop + [dst]
+        edges = [Line(s, hub) for s in src] + [Line(chain[k], chain[k + 1]) for k in range(3)]
         for e in edges:
             e.set_stroke(LINE, 3)
-        nodes = VGroup(*[node().move_to(p) for p in src + hop])
-        hub_n = node(0.24, WARN).move_to(hub)
+        nodes = VGroup(*[node().move_to(p) for p in src], *[node(0.16, WARN).move_to(p) for p in hop])
+        hub_n = node(0.22, TEXT2).move_to(hub)
         dst_n = Square(0.5, stroke_color=TEXT2, stroke_width=2.6, fill_color=PANEL, fill_opacity=1).move_to(dst)
+        # 每一跳金額不變（200k）、每站約 8 分鐘：沒有分拆或匯集，規則圖樣抓不到
+        amts = VGroup(*[mono("200k", 16, MUTED).move_to((chain[k] + chain[k + 1]) / 2 + UP * 0.3) for k in range(3)])
         tags = VGroup(mono("sources", 16, MUTED).next_to(src[2], DOWN, 0.3),
-                      mono("fast in-out relay", 16, WARN).move_to([hub[0], cy - 1.6, 0]),
-                      mono("TRelay03", 16, TEXT2).next_to(dst, DOWN, 0.35))
+                      mono("OTC out", 16, TEXT2).next_to(hub, DOWN, 0.35),
+                      mono("fast in-out relay · ~8 min per hop", 16, WARN).move_to([(hop[0][0] + dst[0]) / 2 - 0.3, cy + 1.05, 0]),
+                      mono("TRelay03", 16, TEXT2).next_to(dst, DOWN, 0.35), amts)
         px = 3.35
         panel = card(6.1, 4.5).move_to([px, cy, 0])
         pl = panel.get_left()[0] + 0.3
@@ -81,7 +85,8 @@ class ChainLens(ProjectScene):
         rules.arrange(DOWN, aligned_edge=LEFT, buff=0.16).next_to(verdict, DOWN, 0.3, aligned_edge=LEFT)
         for r in rules:
             self.play(FadeIn(r, shift=RIGHT * 0.1), run_time=0.35)
-            self.hold(0.7)
+            self.hold(1.2)
+        self.hold(0.8)
 
         # ── 證據交給人 ──
         self.play(FadeOut(rules), run_time=0.3)
@@ -136,7 +141,7 @@ class EvidenceAtSource(ProjectScene):
         gx = (wal.get_right()[0] + ag.get_left()[0]) / 2
         gates = VGroup()
         for i, s in enumerate(("L0  who is asking?", "L1  is it genuine?", "L2  may this be asked?")):
-            g = card(3.0, 0.8).move_to([gx, cy + 1.35 - i * 1.15, 0])
+            g = card(3.0, 0.8).move_to([gx, cy + 1.45 - i * 1.0, 0])
             gates.add(VGroup(g, mono(s, 16, TEXT2).move_to(g)))
         order = mono("nothing is read before L0 passes", 16, MUTED).next_to(gates, DOWN, 0.3)
         self.play(FadeIn(gates), run_time=0.4)
@@ -149,29 +154,43 @@ class EvidenceAtSource(ProjectScene):
         self.play(FadeIn(order), qc.animate.move_to(rows[0].get_right() + RIGHT * 0.5), run_time=0.5)
         self.play(Indicate(rows[0], color=PASS), FadeOut(qc), run_time=0.4)
         ans = mono("gets: true", 20, PASS, BOLD).next_to(q1, DOWN, 0.25, aligned_edge=LEFT)
+        # 銀行 agent 只給建議，requiresHumanReview（bankAgent.ts）
+        rec = VGroup(mono("a recommendation only", 16, ACCENT),
+                     mono("→ a human reviewer decides", 16, ACCENT)).arrange(DOWN, aligned_edge=LEFT, buff=0.06)
+        rec.next_to(ans, DOWN, 0.18, aligned_edge=LEFT)
         self.play(FadeIn(ans, shift=RIGHT * 0.1), run_time=0.4)
-        self.hold(1.2)
+        self.play(FadeIn(rec), run_time=0.4)
+        self.hold(1.4)
 
-        # ── 第二個問題：手續費金額 → L2 擋下（只放行是非題與匿名匯總） ──
+        # ── 仲介費金額在憑證的 _sd 裡，從不揭露（設計如此，不是閘門擋的；README:109）──
+        hid = VGroup(chip("feeAmount", WARN, BG, 16), mono("hidden in the credential", 16, WARN),
+                     mono("never disclosed", 16, WARN)).arrange(DOWN, aligned_edge=LEFT, buff=0.1)
+        hid.move_to(s1, aligned_edge=UL)
+        self.play(FadeOut(s1), FadeOut(s2), rows[0].animate.set_color(WARN), run_time=0.3)
+        self.play(FadeIn(hid, shift=UP * 0.1), run_time=0.4)
+        self.hold(1.6)
+
+        # ── 品牌方的 agent 問個別勞工 → L0、L1 過，L2 拒絕（README:562、601）──
         self.play(*[g[0].animate.set_stroke(LINE) for g in gates], *[g[1].animate.set_color(TEXT2) for g in gates],
-                  FadeOut(order), run_time=0.3)
-        q2 = VGroup(mono("asks:", 16, MUTED), mono("feeAmount?", 18)).arrange(DOWN, aligned_edge=LEFT, buff=0.08)
-        q2.next_to(ans, DOWN, 0.2, aligned_edge=LEFT)
+                  FadeOut(order), FadeOut(q1), FadeOut(ans), FadeOut(rec), FadeOut(al), FadeOut(names[1]), run_time=0.4)
+        al2 = mono("BRAND'S AGENT", 16, LABEL).move_to(al, aligned_edge=LEFT)
+        nm2 = mono("brand", 16, TEXT2).move_to(names[1])
+        q2 = VGroup(mono("asks:", 16, MUTED), mono("which workers", 18), mono("went over hours?", 18)).arrange(DOWN, aligned_edge=LEFT, buff=0.08)
+        q2.move_to(q1, aligned_edge=UL)
+        self.play(FadeIn(al2), FadeIn(nm2), run_time=0.3)
         self.play(FadeIn(q2), run_time=0.4)
+        self.hold(0.6)
         qc2 = Dot(q2.get_left() + LEFT * 0.15, 0.11, color=REFUSE)
         self.add(qc2)
         for g in gates[:2]:
             self.play(qc2.animate.move_to(g[0].get_right() + RIGHT * 0.2), g[0].animate.set_stroke(PASS), run_time=0.35)
         self.play(qc2.animate.move_to(gates[2][0].get_right() + RIGHT * 0.2), run_time=0.35)
-        why = VGroup(mono("L2: yes/no or k-anonymous", 16, REFUSE),
-                     mono("aggregates only", 16, REFUSE)).arrange(DOWN, aligned_edge=LEFT, buff=0.06).next_to(gates, DOWN, 0.3)
+        why = VGroup(mono("INDIVIDUAL_QUERY_REJECTED", 16, REFUSE, BOLD),
+                     mono("L2: yes/no or k-anonymous", 16, REFUSE),
+                     mono("aggregates only", 16, REFUSE)).arrange(DOWN, aligned_edge=LEFT, buff=0.08).next_to(gates, DOWN, 0.3)
         self.play(gates[2][0].animate.set_stroke(REFUSE), gates[2][1].animate.set_color(REFUSE), Wiggle(qc2),
                   FadeIn(why), run_time=0.7)
-        self.play(FadeOut(qc2), Indicate(rows[0], color=REFUSE), run_time=0.4)
-        self.hold(1.4)
-        rev = VGroup(mono("→ a named human", 18, ACCENT), mono("  reviewer decides", 18, ACCENT)).arrange(DOWN, aligned_edge=LEFT, buff=0.06)
-        rev.next_to(q2, DOWN, 0.15).align_to(al, LEFT)
-        self.play(FadeIn(rev), run_time=0.4)
+        self.play(FadeOut(qc2), run_time=0.3)
         self.outro()
 
 
@@ -217,7 +236,7 @@ class MedSSI(ProjectScene):
         # ── 右：驗證方，每個情境只開放特定卡 ──
         rx = self.x_right - 2.15
         scen = [("PHARMACY · pickup", "prescription + allergy cards", [0, 1, 2]),
-                ("RESEARCH · authorization", "condition + consent cards", [3, 4])]
+                ("AUTHORIZATION · record", "condition + consent cards", [3, 4])]
         boxes = VGroup()
         for i, (nm, sub, _) in enumerate(scen):
             b = card(4.3, 1.25).move_to([rx, cy + 1.3 - i * 2.2, 0])
@@ -233,18 +252,23 @@ class MedSSI(ProjectScene):
             ial = mono("min. assurance level ✓", 16, PASS).next_to(b, DOWN, 0.1, aligned_edge=LEFT)
             self.play(b.animate.set_stroke(ACCENT), *[r.animate.set_opacity(1) for r in on],
                       *[r[0].animate.set_stroke(PASS) for r in on], GrowArrow(arrow), FadeIn(ial), run_time=0.7)
-            self.hold(1.2)
+            self.hold(1.2 if i == 0 else 2.0)
             if i == 0:
                 # 藥局多要「診斷」→ 不在這次的範圍，伺服器拒絕
                 ask = VGroup(mono("+ asks for diagnosis", 16, REFUSE),
                              mono("✗ unrequested field → rejected", 16, REFUSE, BOLD)).arrange(DOWN, aligned_edge=LEFT, buff=0.08)
                 ask.next_to(ial, DOWN, 0.15, aligned_edge=LEFT)
-                self.play(FadeIn(ask, shift=UP * 0.1), Indicate(rows[3], color=REFUSE), run_time=0.6)
+                dg = rows[3]
+                self.play(FadeIn(ask, shift=UP * 0.1), dg[0].animate.set_opacity(1).set_stroke(REFUSE),
+                          dg[1].animate.set_opacity(1).set_color(REFUSE), dg[2].animate.set_opacity(1), run_time=0.6)
                 self.hold(2.0)
-                self.play(FadeOut(ask), run_time=0.3)
+                self.play(FadeOut(ask), dg[0].animate.set_stroke(LINE).set_opacity(0.35),
+                          dg[1].animate.set_color(TEXT).set_opacity(0.35), dg[2].animate.set_opacity(0.35), run_time=0.3)
             self.play(b.animate.set_stroke(LINE), *[r.animate.set_opacity(0.35) for r in on],
                       *[r[0].animate.set_stroke(LINE) for r in on], FadeOut(arrow), FadeOut(ial), run_time=0.35)
-        self.play(*[r.animate.set_opacity(1) for r in rows], run_time=0.3)
+        sum0 = mono("✗ diagnosis request rejected", 16, REFUSE).next_to(boxes[0], DOWN, 0.1, aligned_edge=LEFT)
+        sum1 = mono("✓ only these two cards", 16, PASS).next_to(boxes[1], DOWN, 0.1, aligned_edge=LEFT)
+        self.play(*[r.animate.set_opacity(1) for r in rows], FadeIn(sum0), FadeIn(sum1), run_time=0.4)
         self.outro()
 
 
@@ -254,7 +278,7 @@ class ChainTrust(ProjectScene):
     TITLE = "ChainTrust"
     TAGS = "SSI · SD-JWT · AI"
     CAPTION = "one KYC reused across institutions · risky transfers scored and blocked in real time"
-    DISCLOSURE = "proof of concept · fraud model trained on synthetic data"
+    DISCLOSURE = "proof of concept · CHT trust root mocked · fraud model trained on synthetic data"
 
     def construct(self):
         cy = (self.y_top + self.y_bot) / 2
@@ -287,12 +311,12 @@ class ChainTrust(ProjectScene):
         hidden = VGroup(*[mono("hidden", 16, MUTED).next_to(c, RIGHT, 0.3) for c in claims[:4]])
         self.play(*[c.animate.set_opacity(0.3) for c in claims[:4]], FadeIn(hidden), claims[4].animate.set_color(PASS), run_time=0.5)
         for r in rps:
-            p = chip("kycLevel", PASS, BG, 16).move_to(claims[4].get_right() + RIGHT * 0.6)
+            p = chip("kycLevel", PASS, BG, 16).next_to(claims[4], RIGHT, 0.25)
             self.play(p.animate.move_to(r[0].get_left() + LEFT * 0.1), run_time=0.5)
             self.remove(p)
             tk = tick().move_to(r[0].get_right() + LEFT * 0.35)
             self.play(Create(tk), r[0].animate.set_stroke(PASS), run_time=0.3)
-        kb = mono("✓ bound to the holder's key", 16, PASS).next_to(rps, DOWN, 0.25, aligned_edge=LEFT)
+        kb = mono("✓ bound to the holder's key", 16, PASS).next_to(rps, DOWN, 0.25, aligned_edge=RIGHT)
         self.play(FadeIn(kb), run_time=0.3)
         self.hold(1.5)
         self.play(*[FadeOut(m) for m in self.mobjects if m is not self.chrome], run_time=0.5)
@@ -315,7 +339,7 @@ class ChainTrust(ProjectScene):
         tx = mono("", 18)
         res = mono("", 18)
         for name, v, col, dec in examples:
-            ntx = mono("transfer: " + name, 20, TEXT).move_to([x0, by + 1.15, 0], aligned_edge=LEFT)
+            ntx = mono("transfer: " + name, 20, TEXT).move_to([x0, by + 0.95, 0], aligned_edge=LEFT)
             nres = mono("→ " + dec, 22, col, BOLD).move_to([x0, by - 1.15, 0], aligned_edge=LEFT)
             self.play(FadeOut(tx), FadeOut(res), FadeIn(ntx), ptr.animate.move_to([x0 + bw * v / 100, by + 0.42, 0]), run_time=0.7)
             self.play(FadeIn(nres), run_time=0.3)
@@ -343,7 +367,7 @@ class PepeFi(ProjectScene):
             .arrange(DOWN, aligned_edge=LEFT, buff=0.08).move_to(kp)
         mk = []
         ys = [[0, .2, .1, .5, .45, .8], [.3, .25, .45, .4, .6, .55], [.2, .7, .4, .9, .55, 1.0]]
-        info = (("sETH", "crypto", "no pass needed", PASS), ("sGOLD", "RWA", "pass needed", WARN), ("sAAPL", "US equity", "market hours", PASS))
+        info = (("sETH", "crypto", "no pass needed", PASS), ("sGOLD", "RWA", "pass needed", WARN), ("sAAPL", "US equity", "pass · US hours", WARN))
         for i, (sym, kind, st, col) in enumerate(info):
             b = card(3.05, 1.45).move_to([L + 4.6 + i * 3.2, top, 0])
             s = mono(sym, 20, TEXT, BOLD).move_to(b.get_corner(UL) + [0.2, -0.27, 0], aligned_edge=LEFT)
@@ -361,8 +385,8 @@ class PepeFi(ProjectScene):
 
         # ── 下半：事件紀錄，一行一行停住 ──
         y0 = top - 1.2
-        def entry(i, txt, why, ok):
-            mark = (tick() if ok else cross()).move_to([L + 0.25, y0 - i * 0.62, 0])
+        def entry(i, txt, why, ok, base=y0):
+            mark = (tick() if ok else cross()).move_to([L + 0.25, base - i * 0.62, 0])
             col = PASS if ok else REFUSE
             t1 = mono(txt, 18, TEXT).next_to(mark, RIGHT, 0.3).shift(UP * 0.12)
             t2 = mono(why, 16, col).next_to(t1, DOWN, 0.06, aligned_edge=LEFT)
@@ -378,18 +402,22 @@ class PepeFi(ProjectScene):
         for i, (a, b, ok, m) in enumerate(log):
             if m == 2:
                 closed = mono("closed → reduce-only", 16, WARN).move_to(mk[2][4], aligned_edge=LEFT)
-                self.play(Transform(mk[2][4], closed), mk[2][3].animate.set_stroke(MUTED), run_time=0.4)
+                old = mk[2][4]
+                self.play(FadeOut(old), FadeIn(closed), mk[2][3].animate.set_stroke(MUTED), run_time=0.4)
+                mk[2].remove(old)
+                mk[2].add(closed)
             e = entry(i, a, b, ok)
             anim = [FadeIn(e, shift=RIGHT * 0.15)]
             if m is not None:
                 anim.append(Circumscribe(mk[m][0], color=PASS if ok else REFUSE, buff=0.04))
             self.play(*anim, run_time=0.5)
-            self.hold(1.3)
+            self.hold(2.0 if m is None else 1.3)
             shown.append(e)
         # 超出 session 上限 → 擋下；付 0.01 USDC 買訊號
-        self.play(*[FadeOut(e) for e in shown], run_time=0.3)
-        e5 = entry(0, "agent · leverage above the session cap", "LeverageExceedsSessionCap — reverted", False)
-        e6 = entry(1, "agent · GET /signals/:trader", "0.01 USDC (testnet) paid over x402", True)
+        up = 1.6
+        self.play(FadeOut(kp), FadeOut(kt), *[FadeOut(m) for m in mk], *[e.animate.shift(UP * up) for e in shown], run_time=0.5)
+        e5 = entry(4, "agent · leverage above the session cap", "LeverageExceedsSessionCap — reverted", False, y0 + up)
+        e6 = entry(5, "agent · GET /signals/:trader", "0.01 USDC (testnet) paid over x402", True, y0 + up)
         self.play(FadeIn(e5, shift=RIGHT * 0.15), run_time=0.5)
         self.hold(1.2)
         self.play(FadeIn(e6, shift=RIGHT * 0.15), run_time=0.5)
@@ -424,7 +452,7 @@ class RWATokenization(ProjectScene):
         cx = -0.95
         reg = card(4.4, 2.3, ACCENT, SOFT).move_to([cx, cy + 1.0, 0])
         rt = mono("IdentityRegistry", 18).move_to(reg.get_corner(UL) + [0.2, -0.3, 0], aligned_edge=LEFT)
-        call = mono("owner · registerIdentity(A,B,C)", 16, TEXT2).next_to(rt, DOWN, 0.12, aligned_edge=LEFT)
+        call = mono("owner · registerIdentity() × 3", 16, TEXT2).next_to(rt, DOWN, 0.12, aligned_edge=LEFT)
         letters = VGroup(*[mono(h, 20, TEXT, BOLD) for h in "ABCD"]).arrange(RIGHT, buff=0.75).move_to(reg.get_center() + DOWN * 0.05)
         self.play(FadeIn(reg), FadeIn(rt), FadeIn(call), FadeIn(letters), run_time=0.6)
         marks = {}
@@ -457,7 +485,7 @@ class RWATokenization(ProjectScene):
         self.play(tok.animate.move_to(above), run_time=0.6)
         ok = mono("sender ✓  receiver ✓", 16, PASS).next_to(tok, DOWN, 0.15)
         self.play(FadeIn(ok), Indicate(letters[0], color=PASS), Indicate(letters[2], color=PASS), run_time=0.6)
-        self.play(tok.animate.move_to(rows["C"][1].get_center()), FadeOut(ok), run_time=0.6)
+        self.play(tok.animate.scale(0.25).move_to(rows["C"][0]).set_opacity(0), FadeOut(ok), run_time=0.6)
         self.remove(tok)
         self.play(wins[5].animate.set_fill(WARN),
                   Transform(unum["A"], mono("5", 20, TEXT, BOLD).move_to(unum["A"], aligned_edge=RIGHT)),
@@ -484,7 +512,7 @@ class RWATokenization(ProjectScene):
         self.hold(0.8)
         for h, amt in (("A", 500), ("B", 400), ("C", 300)):
             c = chip("claimRent()", cols[h], BG, 16).move_to(rows[h][1].get_center())
-            self.play(c.animate.move_to(dist.get_right() + LEFT * 0.9 + UP * 0.1), run_time=0.45)
+            self.play(c.animate.scale(0.3).move_to(dist.get_right()).set_opacity(0), run_time=0.45)
             self.remove(c)
             amtm = mono(str(amt), 20, cols[h], BOLD).move_to([hx + 4.85, rows[h].get_y(), 0], aligned_edge=RIGHT)
             self.play(FadeIn(amtm, shift=LEFT * 0.15), run_time=0.3)
@@ -571,7 +599,7 @@ class QMLSimulation(ProjectScene):
                      Dot([x, ys[0], 0], 0.07, color=ACCENT),
                      Circle(0.12, stroke_color=ACCENT, stroke_width=2.4).move_to([x, ys[1], 0]))
         circ.add(gate(x0 + 2.4, ys[1], "P(φ)", 0.7))
-        reps = mono("ZZFeatureMap · reps = 2", 16, TEXT2).next_to(wires, DOWN, 0.3, aligned_edge=LEFT)
+        reps = mono("ZZFeatureMap · QSVM reps 2 · QNN reps 1", 16, TEXT2).next_to(wires, DOWN, 0.3, aligned_edge=LEFT)
         kern = mono("K(x, x′) = |⟨φ(x)|φ(x′)⟩|²", 18, ACCENT).next_to(reps, DOWN, 0.2, aligned_edge=LEFT)
         models = VGroup(mono("→ QSVM  (fidelity quantum kernel)", 16, TEXT),
                         mono("→ variational QNN  (RealAmplitudes)", 16, TEXT),
@@ -590,11 +618,12 @@ class QMLSimulation(ProjectScene):
                      mono("accuracy printed when run", 18, TEXT2),
                      mono("no outputs saved in the notebook", 18, WARN)).arrange(DOWN, aligned_edge=LEFT, buff=0.3)
         res.move_to(panel.get_center())
-        self.play(FadeIn(h4), run_time=0.3)
+        self.play(FadeIn(h4), FadeIn(res[0]), run_time=0.3)
         for k in range(4):
             acc = mono("acc —", 16, MUTED).next_to(cells[k][1], DOWN, 0.08)
-            self.play(*light([k]), FadeIn(acc), run_time=0.3)
-        self.play(LaggedStart(*[FadeIn(r) for r in res], lag_ratio=0.35), run_time=0.9)
+            extra = [FadeIn(res[1])] if k == 1 else [FadeIn(res[2])] if k == 3 else []
+            self.play(*light([k]), FadeIn(acc), *extra, run_time=0.3)
+        self.hold(0.6)
         self.outro()
 
 

@@ -1,6 +1,6 @@
 # 改了 manim/ 底下的動畫原始碼 → 重新算圖，輸出到 assets/manim/
 #   *.gif               給這個 README 用
-#   *.mp4 / *.webp / *-preview.mp4   給 zuemen.net（My_Web 的 sync-manim workflow 每天來拉）
+#   *.mp4 / *.webp / *-preview.mp4   給 zuemen.net（My_Web 的 sync-manim workflow 手動觸發來拉，推到 manim-sync 分支）
 name: render-manim
 
 on:
@@ -34,12 +34,12 @@ jobs:
           cache: pip
           cache-dependency-path: manim/requirements.txt
 
-      - name: System packages (Pango/Cairo, FFmpeg, LaTeX + dvisvgm)
+      # 場景全部用 Text（不用 MathTex／DecimalNumber），不需要 LaTeX
+      - name: System packages (Pango/Cairo, FFmpeg)
         run: |
           sudo apt-get update -q
           sudo apt-get install -y -q --no-install-recommends \
-            libpango1.0-dev libcairo2-dev pkg-config ffmpeg \
-            texlive-latex-base texlive-latex-extra texlive-fonts-recommended dvisvgm
+            libpango1.0-dev libcairo2-dev pkg-config ffmpeg
 
       - name: Fonts used by zuemen.net
         run: |
@@ -49,7 +49,9 @@ jobs:
         run: pip install -r manim/requirements.txt
 
       - name: Render
-        run: bash manim/render.sh ${{ github.event.inputs.scenes }}
+        env:
+          SCENES: ${{ github.event.inputs.scenes }}
+        run: bash manim/render.sh $SCENES
 
       - name: Commit if changed
         run: |
