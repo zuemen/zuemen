@@ -102,6 +102,8 @@ class ProjectScene(Scene):
     TITLE = ""
     TAGS = ""
     CAPTION = ""
+    # 畫面上一直看得到的揭露（虛構人物、合成情境、測試網、自簽憑證…），接在 ILLUSTRATION 後面
+    DISCLOSURE = ""
 
     def setup(self):
         top = config.frame_height / 2
@@ -111,22 +113,36 @@ class ProjectScene(Scene):
         aw = mono(self.AWARD.upper(), 17, LABEL).to_corner(UL, buff=0.55)
         tg = mono(self.TAGS, 17, MUTED).to_corner(UR, buff=0.55)
         # 動畫是示意，不是實錄或實測結果（網站影片的內容紀律：動畫一律標 Illustration）
-        il = mono("ILLUSTRATION", 15, LABEL).next_to(tg, DOWN, buff=0.22, aligned_edge=RIGHT)
+        il = mono("ILLUSTRATION", 16, WARN).next_to(tg, DOWN, buff=0.22, aligned_edge=RIGHT)
         tt = serif(self.TITLE, 54).next_to(aw, DOWN, buff=0.22, aligned_edge=LEFT)
         rule_top = Line([left, tt.get_bottom()[1] - 0.25, 0], [right, tt.get_bottom()[1] - 0.25, 0],
                         stroke_color=LINE, stroke_width=1.6)
-        cap = mono(self.CAPTION, 18, MUTED).to_corner(DL, buff=0.5)
+        # 底部：機制說明一行；有揭露時再加一行（黃字，整支片一直看得到）
+        disc = mono(self.DISCLOSURE or " ", 16, WARN).to_corner(DL, buff=0.45)
+        cap = mono(self.CAPTION, 18, MUTED)
+        if self.DISCLOSURE:
+            cap.next_to(disc, UP, buff=0.14, aligned_edge=LEFT)
+        else:
+            cap.to_corner(DL, buff=0.5)
         rule_bot = Line([left, cap.get_top()[1] + 0.25, 0], [right, cap.get_top()[1] + 0.25, 0],
                         stroke_color=LINE, stroke_width=1.6)
         self.chrome = VGroup(aw, tg, il, tt, rule_top, rule_bot, cap)
+        if self.DISCLOSURE:
+            self.chrome.add(disc)
         self.add(self.chrome)
         # 內容區的上下界，給子類別排版用
         self.y_top = rule_top.get_y() - 0.2
         self.y_bot = rule_bot.get_y() + 0.2
+        # 左右安全邊界（和上下分隔線同寬）
+        self.x_left, self.x_right = left, right
 
-    def outro(self, *keep):
-        """結尾：停一下再淡出內容（標題框留著），讓 GIF 首尾銜接"""
-        self.wait(1.4)
+    def hold(self, t=1.2):
+        """讓剛出現的字停得夠久，沒有旁白也讀得完"""
+        self.wait(t)
+
+    def outro(self, *keep, hold=2.5):
+        """結尾：完整畫面停 2.5 秒再淡出內容（標題框留著），讓 GIF 首尾銜接"""
+        self.wait(hold)
         rest = [m for m in self.mobjects if m is not self.chrome and m not in keep]
         self.play(*[FadeOut(m) for m in rest], run_time=0.6)
         self.wait(0.2)

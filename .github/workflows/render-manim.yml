@@ -60,6 +60,6 @@ jobs:
             echo "no changes"
           else
             git commit -m "chore: re-render Manim project animations"
-            git pull --rebase origin main
+            git pull --rebase origin "$GITHUB_REF_NAME"   # 在分支上手動跑時，成品留在該分支
             git push
           fi

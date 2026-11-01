@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # 把 projects.py 的每個場景算成兩種用途的檔案（輸出到 repo 的 assets/manim/）
 #
-#   <slug>.gif          GitHub README 用：640px、15fps、調色盤最佳化
+#   <slug>.gif          GitHub README 用：720px、12fps、調色盤最佳化（約 20 秒的片，每支控制在 2 MB 左右）
 #   <slug>.mp4          zuemen.net /projects 用：1080p H.264、faststart
 #   <slug>.webp         網站封面（取動畫結尾、內容最完整的那一格）
 #   <slug>-preview.mp4  網站首頁循環預覽：720p、無聲、檔案更小
@@ -36,6 +36,6 @@ for slug in "${targets[@]}"; do
   # 4) 封面：結尾淡出前 1.2 秒那一格
   ffmpeg -v error -y -ss "$(python3 -c "print(max($dur-1.2,0))")" -i "$src" -frames:v 1 -vf scale=1280:-2 -c:v libwebp -quality 82 "$OUT/$slug.webp"
   # 5) README 用 GIF：先產生全片共用調色盤，再套用（避免 Manim 直出 GIF 的色帶與巨大檔案）
-  ffmpeg -v error -y -i "$src" -vf "fps=15,scale=640:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=96:stats_mode=diff[p];[b][p]paletteuse=dither=none:diff_mode=rectangle" "$OUT/$slug.gif"
+  ffmpeg -v error -y -i "$src" -vf "fps=12,scale=720:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=96:stats_mode=diff[p];[b][p]paletteuse=dither=none:diff_mode=rectangle" "$OUT/$slug.gif"
 done
 ls -la "$OUT"
