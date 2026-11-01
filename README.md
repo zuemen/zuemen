@@ -40,43 +40,43 @@ $ echo $PRINCIPLE
 <table>
 <tr>
 <td width="50%" valign="top">
-<a href="https://github.com/zuemen/ChainLens"><img src="./assets/projects/chainlens.svg" alt="ChainLens" width="100%"/></a>
+<a href="https://github.com/zuemen/ChainLens"><img src="./assets/manim/chainlens.gif" alt="ChainLens" width="100%"/></a>
 <b><a href="https://github.com/zuemen/ChainLens">ChainLens</a></b> · 🏆 FinTech Taipei Awards 2026 — Winner<br/>
 <sub>規則引擎往上游追資金路徑，GraphSAGE 評估目的地周邊結構；模型只能升級審查、不能自行扣留，每個警示附證據鏈與 STR 草稿，由人決定。</sub>
 </td>
 <td width="50%" valign="top">
-<a href="https://github.com/zuemen/evidence-at-source"><img src="./assets/projects/evidence-at-source.svg" alt="Evidence at Source" width="100%"/></a>
+<a href="https://github.com/zuemen/evidence-at-source"><img src="./assets/manim/evidence-at-source.gif" alt="Evidence at Source" width="100%"/></a>
 <b><a href="https://github.com/zuemen/evidence-at-source">Evidence at Source</a></b> · 🏆 GLEIF Appreciation Award<br/>
 <sub>移工持有雙方簽章的事實憑證；銀行的 AI 代理經三層政策閘門，只拿到 boolean 與理由碼，拿不到原始資料，vLEI 鏈每次查詢重新驗證。</sub>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
-<a href="https://github.com/zuemen/pepelab_v2"><img src="./assets/projects/medssi.svg" alt="MedSSI" width="100%"/></a>
+<a href="https://github.com/zuemen/pepelab_v2"><img src="./assets/manim/medssi.gif" alt="MedSSI" width="100%"/></a>
 <b><a href="https://github.com/zuemen/pepelab_v2">MedSSI</a></b> · 🏆 MODA Digital Credential Challenge 2025 — Merit<br/>
 <sub>醫院發一次健康憑證，病人存在政府數位皮夾；藥局、研究者、保險各自只看到情境允許的 FHIR 欄位，越界請求直接拒絕。</sub>
 </td>
 <td width="50%" valign="top">
-<a href="https://github.com/zuemen/ChainTrust"><img src="./assets/projects/chaintrust.svg" alt="ChainTrust" width="100%"/></a>
+<a href="https://github.com/zuemen/ChainTrust"><img src="./assets/manim/chaintrust.gif" alt="ChainTrust" width="100%"/></a>
 <b><a href="https://github.com/zuemen/ChainTrust">ChainTrust</a></b> · 🔷 Chunghwa Telecom Smart Innovation 2026 — Finalist<br/>
 <sub>一次 KYC、跨機構重用（SD-JWT 最小揭露，身分證號不外流）；AI 防詐即時攔截高風險轉帳。</sub>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
-<a href="https://github.com/zuemen/pepelab_onchain_cfd"><img src="./assets/projects/pepefi.svg" alt="PepeFi On-Chain CFD" width="100%"/></a>
+<a href="https://github.com/zuemen/pepelab_onchain_cfd"><img src="./assets/manim/pepefi.gif" alt="PepeFi On-Chain CFD" width="100%"/></a>
 <b><a href="https://github.com/zuemen/pepelab_onchain_cfd">PepeFi On-Chain CFD</a></b> · 🟡 NCCU Capstone 2026 — Base Sepolia<br/>
 <sub>參考美股、黃金、加密的永續 CFD；RWA 部位需鏈上驗證的合格投資人憑證，休市自動 reduce-only，訊號以 x402 付費。</sub>
 </td>
 <td width="50%" valign="top">
-<a href="https://zuemen.net/projects#rwa-tokenization"><img src="./assets/projects/rwa-tokenization.svg" alt="RWA Real Estate Tokenization" width="100%"/></a>
+<a href="https://zuemen.net/projects#rwa-tokenization"><img src="./assets/manim/rwa-tokenization.gif" alt="RWA Real Estate Tokenization" width="100%"/></a>
 <b><a href="https://zuemen.net/projects#rwa-tokenization">RWA Real Estate Tokenization</a></b> · Blockchain Implementation<br/>
 <sub>身分檢查寫在代幣合約裡：非白名單地址的轉讓由合約自己拒絕；租金依持有比例分配，持有人自行領取。</sub>
 </td>
 </tr>
 <tr>
 <td width="50%" valign="top">
-<a href="https://zuemen.net/projects#qml-simulation"><img src="./assets/projects/qml-simulation.svg" alt="QML Simulation" width="100%"/></a>
+<a href="https://zuemen.net/projects#qml-simulation"><img src="./assets/manim/qml-simulation.gif" alt="QML Simulation" width="100%"/></a>
 <b><a href="https://zuemen.net/projects#qml-simulation">QML Simulation</a></b> · Quantum ML Study<br/>
 <sub>資料來源 × 模型家族的 2×2 設計，區分資料優勢與模型優勢；ZZFeatureMap 量子核 QSVM、QNN 對照邏輯迴歸。</sub>
 </td>

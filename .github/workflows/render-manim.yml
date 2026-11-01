@@ -1,0 +1,64 @@
+# 改了 manim/ 底下的動畫原始碼 → 重新算圖，輸出到 assets/manim/
+#   *.gif               給這個 README 用
+#   *.mp4 / *.webp / *-preview.mp4   給 zuemen.net（My_Web 的 sync-manim workflow 每天來拉）
+name: render-manim
+
+on:
+  push:
+    branches: [main]
+    paths: ["manim/**", ".github/workflows/render-manim.yml"]
+  workflow_dispatch:
+    inputs:
+      scenes:
+        description: "只算這些 slug（空白分隔，留空 = 全部）"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-manim
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: System packages (Pango/Cairo, FFmpeg, LaTeX + dvisvgm)
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q --no-install-recommends \
+            libpango1.0-dev libcairo2-dev pkg-config ffmpeg \
+            texlive-latex-base texlive-latex-extra texlive-fonts-recommended dvisvgm
+
+      - name: Fonts used by zuemen.net
+        run: |
+          mkdir -p ~/.fonts && cp manim/fonts/*.ttf ~/.fonts/ && fc-cache -f
+
+      - name: Manim Community Edition
+        run: pip install manim==0.22.1
+
+      - name: Render
+        run: bash manim/render.sh ${{ github.event.inputs.scenes }}
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/manim
+          if git diff --cached --quiet; then
+            echo "no changes"
+          else
+            git commit -m "chore: re-render Manim project animations"
+            git pull --rebase origin main
+            git push
+          fi
