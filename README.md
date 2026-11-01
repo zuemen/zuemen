@@ -37,6 +37,8 @@ $ echo $PRINCIPLE
 
 ### `❯ ./demo --play`
 
+<sub>用 <a href="https://www.manim.community/">Manim</a>（3Blue1Brown 的動畫引擎）製作，原始碼在 <code>manim/</code>；改動後由 GitHub Actions 自動重新算圖</sub>
+
 <table>
 <tr>
 <td width="50%" valign="top">

@@ -32,6 +32,7 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+          cache-dependency-path: manim/requirements.txt
 
       - name: System packages (Pango/Cairo, FFmpeg, LaTeX + dvisvgm)
         run: |
@@ -45,7 +46,7 @@ jobs:
           mkdir -p ~/.fonts && cp manim/fonts/*.ttf ~/.fonts/ && fc-cache -f
 
       - name: Manim Community Edition
-        run: pip install manim==0.22.1
+        run: pip install -r manim/requirements.txt
 
       - name: Render
         run: bash manim/render.sh ${{ github.event.inputs.scenes }}
