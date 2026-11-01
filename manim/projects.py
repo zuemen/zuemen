@@ -156,7 +156,7 @@ class EvidenceAtSource(ProjectScene):
         self.play(*[g[0].animate.set_stroke(LINE) for g in gates], *[g[1].animate.set_color(TEXT2) for g in gates],
                   FadeOut(order), run_time=0.3)
         q2 = VGroup(mono("asks:", 16, MUTED), mono("feeAmount?", 18)).arrange(DOWN, aligned_edge=LEFT, buff=0.08)
-        q2.next_to(ans, DOWN, 0.3, aligned_edge=LEFT)
+        q2.next_to(ans, DOWN, 0.2, aligned_edge=LEFT)
         self.play(FadeIn(q2), run_time=0.4)
         qc2 = Dot(q2.get_left() + LEFT * 0.15, 0.11, color=REFUSE)
         self.add(qc2)
@@ -170,7 +170,7 @@ class EvidenceAtSource(ProjectScene):
         self.play(FadeOut(qc2), Indicate(rows[0], color=REFUSE), run_time=0.4)
         self.hold(1.4)
         rev = VGroup(mono("→ a named human", 18, ACCENT), mono("  reviewer decides", 18, ACCENT)).arrange(DOWN, aligned_edge=LEFT, buff=0.06)
-        rev.next_to(q2, DOWN, 0.25).align_to(al, LEFT)
+        rev.next_to(q2, DOWN, 0.15).align_to(al, LEFT)
         self.play(FadeIn(rev), run_time=0.4)
         self.outro()
 
@@ -424,7 +424,7 @@ class RWATokenization(ProjectScene):
         cx = -0.95
         reg = card(4.4, 2.3, ACCENT, SOFT).move_to([cx, cy + 1.0, 0])
         rt = mono("IdentityRegistry", 18).move_to(reg.get_corner(UL) + [0.2, -0.3, 0], aligned_edge=LEFT)
-        call = mono("owner · registerIdentity(A, B, C)", 16, TEXT2).next_to(rt, DOWN, 0.12, aligned_edge=LEFT)
+        call = mono("owner · registerIdentity(A,B,C)", 16, TEXT2).next_to(rt, DOWN, 0.12, aligned_edge=LEFT)
         letters = VGroup(*[mono(h, 20, TEXT, BOLD) for h in "ABCD"]).arrange(RIGHT, buff=0.75).move_to(reg.get_center() + DOWN * 0.05)
         self.play(FadeIn(reg), FadeIn(rt), FadeIn(call), FadeIn(letters), run_time=0.6)
         marks = {}
