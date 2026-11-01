@@ -400,7 +400,7 @@ def render_onchain(chains, status):
             b.append(f'<text x="250" y="{y+17}" {MONO} font-size="12" fill="{C["muted"]}">rpc unreachable</text>')
             continue
         b.append(f'<text x="230" y="{y+17}" {MONO} font-size="12" fill="{C["cyan"]}">#{d["number"]:,}</text>')
-        b.append(f'<text x="360" y="{y+17}" {MONO} font-size="11" fill="{C["muted"]}">{(f"{d['gwei']:.3f}" if d["gwei"] >= 0.001 else "<0.001")} gwei · {d["txs"]} tx · {d["block_time"]:.2f}s/blk</text>')
+        b.append(f'<text x="360" y="{y+17}" {MONO} font-size="11" fill="{C["muted"]}">{(f"{d['gwei']:.3f}" if d["gwei"] >= 0.001 else "&lt;0.001")} gwei · {d["txs"]} tx · {d["block_time"]:.2f}s/blk</text>')
         # 傳送帶：每個「出塊間隔」往左移一格（間隔夾在 0.6–4 秒內方便觀看）
         step, n = 30, 12
         dur = max(min(d["block_time"], 4), 0.6)
@@ -430,7 +430,7 @@ def render_header(chains, btc, status):
     w, h = 1200, 372
     b = []
     # 左欄：小標、名字、一句話定位
-    b.append(f'<text x="56" y="70" {MONO} font-size="12" letter-spacing="2.2" fill="{C["label"]}">DIGITAL TRUST · NCCU MIS ’27</text>')
+    b.append(f'<text x="56" y="70" {MONO} font-size="12" letter-spacing="2.2" fill="{C["label"]}">BLOCKCHAIN · DIGITAL TRUST · NCCU MIS ’27</text>')
     b.append(f'<text x="54" y="138" {SERIF} font-size="66" fill="{C["text"]}">Zuemen Chu<tspan dx="18" font-size="34" fill="{C["muted"]}">朱廷翊</tspan></text>')
     statement = ["I work on digital trust — making a credential verifiable",
                  "without trusting whoever hands it to you, and making",
@@ -469,8 +469,6 @@ def render_header(chains, btc, status):
     base = chains.get("base")
     if base:
         parts.append(f"base-sepolia #{base['number']:,}")
-    if btc:
-        parts.append(f"BTC VaR95 {var95(log_returns(btc['prices']))*100:.2f}%")
     parts.append(f"updated {NOW:%Y-%m-%d %H:%M} UTC+8")
     live = "  ·  ".join(parts)
     b.append(f'<line x1="56" y1="{h-46}" x2="{w-56}" y2="{h-46}" stroke="{C["line"]}"/>')

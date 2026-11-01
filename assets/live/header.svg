@@ -2,7 +2,7 @@
 <style>@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
 <rect width="1200" height="372" rx="6" fill="#0a0a0b" stroke="#222228"/>
 <line x1="56" y1="258" x2="700" y2="258" stroke="#222228"/>
-<text x="56" y="70" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" letter-spacing="2.2" fill="#8f8e88">DIGITAL TRUST · NCCU MIS ’27</text>
+<text x="56" y="70" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12" letter-spacing="2.2" fill="#8f8e88">BLOCKCHAIN · DIGITAL TRUST · NCCU MIS ’27</text>
 <text x="54" y="138" font-family="Newsreader,Georgia,Times New Roman,Microsoft JhengHei,PingFang TC,serif" font-size="66" fill="#ecebe6">Zuemen Chu<tspan dx="18" font-size="34" fill="#8a8a93">朱廷翊</tspan></text>
 <text x="56" y="184" font-family="IBM Plex Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Microsoft JhengHei,PingFang TC,sans-serif" font-size="18" fill="#a6a59f">I work on digital trust — making a credential verifiable</text>
 <text x="56" y="211" font-family="IBM Plex Sans,-apple-system,BlinkMacSystemFont,Segoe UI,Microsoft JhengHei,PingFang TC,sans-serif" font-size="18" fill="#a6a59f">without trusting whoever hands it to you, and making</text>
@@ -35,5 +35,5 @@
 <text x="802" y="303" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">quantum machine learning</text>
 <line x1="56" y1="326" x2="1144" y2="326" stroke="#222228"/>
 <circle cx="60" cy="348" r="3.5" fill="#8cc9a1"><animate attributeName="opacity" values="1;.25;1" dur="2s" repeatCount="indefinite"/></circle>
-<text x="72" y="352" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">base-sepolia #53,391,514  ·  BTC VaR95 2.68%  ·  updated 2026-11-02 14:16 UTC+8</text>
+<text x="72" y="352" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">base-sepolia #53,155,982  ·  updated 2026-11-02 01:11 UTC+8</text>
 </svg>
