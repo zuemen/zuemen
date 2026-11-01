@@ -403,7 +403,7 @@ class RWATokenization(ProjectScene):
         self.play(FadeOut(tok2), FadeOut(rej), run_time=0.3)
 
         # ── 租金 1,200 USDC 依持有比例 5:4:3 分配，各自領取 ──
-        rent = mono("rent in: 1,200 USDC", 17, ACCENT).move_to(dist.get_bottom() + UP * 0.4)
+        rent = mono("rent in: 1,200 mock USDC", 15, ACCENT).move_to(dist.get_bottom() + UP * 0.4)
         self.play(FadeIn(rent, shift=UP * 0.1), run_time=0.4)
         claims = []
         for h, amt in (("A", 500), ("B", 400), ("C", 300)):

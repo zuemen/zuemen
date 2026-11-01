@@ -110,13 +110,15 @@ class ProjectScene(Scene):
 
         aw = mono(self.AWARD.upper(), 17, LABEL).to_corner(UL, buff=0.55)
         tg = mono(self.TAGS, 17, MUTED).to_corner(UR, buff=0.55)
+        # 動畫是示意，不是實錄或實測結果（網站影片的內容紀律：動畫一律標 Illustration）
+        il = mono("ILLUSTRATION", 15, LABEL).next_to(tg, DOWN, buff=0.22, aligned_edge=RIGHT)
         tt = serif(self.TITLE, 54).next_to(aw, DOWN, buff=0.22, aligned_edge=LEFT)
         rule_top = Line([left, tt.get_bottom()[1] - 0.25, 0], [right, tt.get_bottom()[1] - 0.25, 0],
                         stroke_color=LINE, stroke_width=1.6)
         cap = mono(self.CAPTION, 18, MUTED).to_corner(DL, buff=0.5)
         rule_bot = Line([left, cap.get_top()[1] + 0.25, 0], [right, cap.get_top()[1] + 0.25, 0],
                         stroke_color=LINE, stroke_width=1.6)
-        self.chrome = VGroup(aw, tg, tt, rule_top, rule_bot, cap)
+        self.chrome = VGroup(aw, tg, il, tt, rule_top, rule_bot, cap)
         self.add(self.chrome)
         # 內容區的上下界，給子類別排版用
         self.y_top = rule_top.get_y() - 0.2
