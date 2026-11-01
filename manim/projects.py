@@ -40,7 +40,7 @@ class ChainLens(ProjectScene):
         # 每一跳金額不變（200k）、每站約 8 分鐘：沒有分拆或匯集，規則圖樣抓不到
         amts = VGroup(*[mono("200k", 16, MUTED).move_to((chain[k] + chain[k + 1]) / 2 + UP * 0.3) for k in range(3)])
         tags = VGroup(mono("sources", 16, MUTED).next_to(src[2], DOWN, 0.3),
-                      mono("OTC out", 16, TEXT2).next_to(hub, DOWN, 0.35),
+                      mono("OTC out", 16, TEXT2).next_to(hub, DOWN, 0.35).shift(RIGHT * 0.3),
                       mono("fast in-out relay · ~8 min per hop", 16, WARN).move_to([(hop[0][0] + dst[0]) / 2 - 0.3, cy + 1.05, 0]),
                       mono("TRelay03", 16, TEXT2).next_to(dst, DOWN, 0.35), amts)
         px = 3.35
@@ -105,7 +105,7 @@ class EvidenceAtSource(ProjectScene):
     TITLE = "Evidence at Source"
     TAGS = "vLEI · VC · AI agents"
     CAPTION = "agents get yes/no answers, never the record · gates run L0 → L1 → L2"
-    DISCLOSURE = "fictional worker · vLEI chain simulated · bank name fictional"
+    DISCLOSURE = "fictional worker, bank and brand · vLEI chain simulated"
 
     def construct(self):
         cy = (self.y_top + self.y_bot) / 2
@@ -151,8 +151,7 @@ class EvidenceAtSource(ProjectScene):
             self.play(qc.animate.move_to(g[0].get_right() + RIGHT * 0.2), run_time=0.35)
             self.play(g[0].animate.set_stroke(PASS), g[1].animate.set_color(PASS), run_time=0.3)
             self.hold(0.3)
-        self.play(FadeIn(order), qc.animate.move_to(rows[0].get_right() + RIGHT * 0.5), run_time=0.5)
-        self.play(Indicate(rows[0], color=PASS), FadeOut(qc), run_time=0.4)
+        self.play(FadeIn(order), FadeOut(qc), rows[0].animate.set_color(PASS), run_time=0.5)
         ans = mono("gets: true", 20, PASS, BOLD).next_to(q1, DOWN, 0.25, aligned_edge=LEFT)
         # 銀行 agent 只給建議，requiresHumanReview（bankAgent.ts）
         rec = VGroup(mono("a recommendation only", 16, ACCENT),
@@ -239,7 +238,7 @@ class MedSSI(ProjectScene):
                 ("AUTHORIZATION · record", "condition + consent cards", [3, 4])]
         boxes = VGroup()
         for i, (nm, sub, _) in enumerate(scen):
-            b = card(4.3, 1.25).move_to([rx, cy + 1.3 - i * 2.2, 0])
+            b = card(4.3, 1.25).move_to([rx, cy + 1.3 - i * 2.4, 0])
             t1 = mono(nm, 16, TEXT).move_to(b.get_corner(UL) + [0.2, -0.3, 0], aligned_edge=LEFT)
             t2 = mono(sub, 16, ACCENT).next_to(t1, DOWN, 0.12, aligned_edge=LEFT)
             boxes.add(VGroup(b, t1, t2))
@@ -403,7 +402,8 @@ class PepeFi(ProjectScene):
             if m == 2:
                 closed = mono("closed → reduce-only", 16, WARN).move_to(mk[2][4], aligned_edge=LEFT)
                 old = mk[2][4]
-                self.play(FadeOut(old), FadeIn(closed), mk[2][3].animate.set_stroke(MUTED), run_time=0.4)
+                self.play(FadeOut(old), mk[2][3].animate.set_stroke(MUTED), run_time=0.25)
+                self.play(FadeIn(closed), run_time=0.25)
                 mk[2].remove(old)
                 mk[2].add(closed)
             e = entry(i, a, b, ok)
@@ -414,7 +414,7 @@ class PepeFi(ProjectScene):
             self.hold(2.0 if m is None else 1.3)
             shown.append(e)
         # 超出 session 上限 → 擋下；付 0.01 USDC 買訊號
-        up = 1.6
+        up = 1.25
         self.play(FadeOut(kp), FadeOut(kt), *[FadeOut(m) for m in mk], *[e.animate.shift(UP * up) for e in shown], run_time=0.5)
         e5 = entry(4, "agent · leverage above the session cap", "LeverageExceedsSessionCap — reverted", False, y0 + up)
         e6 = entry(5, "agent · GET /signals/:trader", "0.01 USDC (testnet) paid over x402", True, y0 + up)
@@ -480,7 +480,7 @@ class RWATokenization(ProjectScene):
         self.hold(0.6)
 
         # ── 轉讓 A→C：代幣合約在轉帳時查雙方身分 → 成功 ──
-        above = reg.get_bottom() + DOWN * 0.4 + RIGHT * 0.9
+        above = reg.get_bottom() + DOWN * 0.4 + RIGHT * 0.6
         tok = chip("A → C · 1 unit", TEXT2, PANEL2).move_to(rows["A"][1].get_center())
         self.play(tok.animate.move_to(above), run_time=0.6)
         ok = mono("sender ✓  receiver ✓", 16, PASS).next_to(tok, DOWN, 0.15)
@@ -511,8 +511,9 @@ class RWATokenization(ProjectScene):
         self.play(FadeIn(d2, shift=UP * 0.1), run_time=0.4)
         self.hold(0.8)
         for h, amt in (("A", 500), ("B", 400), ("C", 300)):
-            c = chip("claimRent()", cols[h], BG, 16).move_to(rows[h][1].get_center())
-            self.play(c.animate.scale(0.3).move_to(dist.get_right()).set_opacity(0), run_time=0.45)
+            c = chip(f"{h} · claimRent()", cols[h], BG, 16).move_to([hx + 2.4, dist.get_y(), 0])
+            self.play(FadeIn(c, shift=LEFT * 0.1), run_time=0.2)
+            self.play(c.animate.scale(0.3).move_to(dist.get_right()).set_opacity(0), run_time=0.4)
             self.remove(c)
             amtm = mono(str(amt), 20, cols[h], BOLD).move_to([hx + 4.85, rows[h].get_y(), 0], aligned_edge=RIGHT)
             self.play(FadeIn(amtm, shift=LEFT * 0.15), run_time=0.3)
