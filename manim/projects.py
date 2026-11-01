@@ -37,7 +37,7 @@ class ChainLens(ProjectScene):
         hub_n = node(0.24, WARN).move_to(hub)
         dst_n = Square(0.5, stroke_color=TEXT2, stroke_width=2.6, fill_color=PANEL, fill_opacity=1).move_to(dst)
         tags = VGroup(mono("sources", 16, MUTED).next_to(src[2], DOWN, 0.3),
-                      mono("fast in-out relay", 16, WARN).next_to(hub, DOWN, 0.45),
+                      mono("fast in-out relay", 16, WARN).move_to([hub[0], cy - 1.6, 0]),
                       mono("TRelay03", 16, TEXT2).next_to(dst, DOWN, 0.35))
         px = 3.35
         panel = card(6.1, 4.5).move_to([px, cy, 0])
@@ -49,8 +49,8 @@ class ChainLens(ProjectScene):
         self.hold(1.0)
 
         # ── 規則引擎：沿路徑往上游回溯 → 0.19，規則說 release ──
-        r1 = mono("rule engine", 18, TEXT2).next_to(req, DOWN, 0.45, aligned_edge=LEFT)
-        r2 = mono("graph model", 18, TEXT2).next_to(r1, DOWN, 0.3, aligned_edge=LEFT)
+        r1 = mono("rule engine", 18, TEXT2).next_to(req, DOWN, 0.32, aligned_edge=LEFT)
+        r2 = mono("graph model", 18, TEXT2).next_to(r1, DOWN, 0.22, aligned_edge=LEFT)
         nx = panel.get_right()[0] - 0.3
         self.play(FadeIn(r1), FadeIn(r2), run_time=0.3)
         back = [e.copy().set_stroke(ACCENT, 3.5) for e in reversed(edges)]
@@ -66,8 +66,8 @@ class ChainLens(ProjectScene):
         score = live_num(sv, "{:.2f}", 18, WARN, place=lambda m: m.move_to([nx, r2.get_y(), 0], aligned_edge=RIGHT))
         self.add(score)
         self.play(sv.animate.set_value(0.98), run_time=0.7)
-        sep = Line([pl, 0, 0], [nx, 0, 0], stroke_color=LINE).next_to(r2, DOWN, 0.3).set_x((pl + nx) / 2)
-        verdict = mono("ENHANCED REVIEW", 24, WARN, BOLD).next_to(sep, DOWN, 0.3).align_to(r1, LEFT)
+        sep = Line([pl, 0, 0], [nx, 0, 0], stroke_color=LINE).next_to(r2, DOWN, 0.22).set_x((pl + nx) / 2)
+        verdict = mono("ENHANCED REVIEW", 24, WARN, BOLD).next_to(sep, DOWN, 0.22).align_to(r1, LEFT)
         self.play(Create(sep), FadeIn(verdict), dst_n.animate.set_stroke(WARN), run_time=0.6)
         self.hold(1.4)
 
@@ -87,8 +87,8 @@ class ChainLens(ProjectScene):
         self.play(FadeOut(rules), run_time=0.3)
         c1 = chip("evidence chain", PASS, BG, 16)
         c2 = chip("STR draft → compliance officer", ACCENT, BG, 16)
-        cc = VGroup(c1, c2).arrange(DOWN, aligned_edge=LEFT, buff=0.15).next_to(verdict, DOWN, 0.3, aligned_edge=LEFT)
-        who = mono("a person makes the final call", 18, ACCENT).next_to(cc, DOWN, 0.25, aligned_edge=LEFT)
+        cc = VGroup(c1, c2).arrange(DOWN, aligned_edge=LEFT, buff=0.12).next_to(verdict, DOWN, 0.22, aligned_edge=LEFT)
+        who = mono("a person makes the final call", 18, ACCENT).next_to(cc, DOWN, 0.18, aligned_edge=LEFT)
         self.play(FadeIn(c1, shift=UP * 0.1), FadeIn(c2, shift=UP * 0.1), run_time=0.5)
         self.play(FadeIn(who), run_time=0.4)
         self.outro()
@@ -140,10 +140,10 @@ class EvidenceAtSource(ProjectScene):
             gates.add(VGroup(g, mono(s, 16, TEXT2).move_to(g)))
         order = mono("nothing is read before L0 passes", 16, MUTED).next_to(gates, DOWN, 0.3)
         self.play(FadeIn(gates), run_time=0.4)
-        qc = chip("query", ACCENT, SOFT, 16).move_to(q1.get_left() + LEFT * 0.1)
+        qc = Dot(q1.get_left() + LEFT * 0.15, 0.11, color=ACCENT)
         self.add(qc)
         for g in gates:
-            self.play(qc.animate.move_to(g[0].get_right() + RIGHT * 0.05), run_time=0.35)
+            self.play(qc.animate.move_to(g[0].get_right() + RIGHT * 0.2), run_time=0.35)
             self.play(g[0].animate.set_stroke(PASS), g[1].animate.set_color(PASS), run_time=0.3)
             self.hold(0.3)
         self.play(FadeIn(order), qc.animate.move_to(rows[0].get_right() + RIGHT * 0.5), run_time=0.5)
@@ -158,18 +158,19 @@ class EvidenceAtSource(ProjectScene):
         q2 = VGroup(mono("asks:", 16, MUTED), mono("feeAmount?", 18)).arrange(DOWN, aligned_edge=LEFT, buff=0.08)
         q2.next_to(ans, DOWN, 0.3, aligned_edge=LEFT)
         self.play(FadeIn(q2), run_time=0.4)
-        qc2 = chip("query", REFUSE, SOFT, 16).move_to(q2.get_left() + LEFT * 0.1)
+        qc2 = Dot(q2.get_left() + LEFT * 0.15, 0.11, color=REFUSE)
         self.add(qc2)
         for g in gates[:2]:
-            self.play(qc2.animate.move_to(g[0].get_right() + RIGHT * 0.05), g[0].animate.set_stroke(PASS), run_time=0.35)
-        self.play(qc2.animate.move_to(gates[2][0].get_right() + RIGHT * 0.05), run_time=0.35)
+            self.play(qc2.animate.move_to(g[0].get_right() + RIGHT * 0.2), g[0].animate.set_stroke(PASS), run_time=0.35)
+        self.play(qc2.animate.move_to(gates[2][0].get_right() + RIGHT * 0.2), run_time=0.35)
         why = VGroup(mono("L2: yes/no or k-anonymous", 16, REFUSE),
                      mono("aggregates only", 16, REFUSE)).arrange(DOWN, aligned_edge=LEFT, buff=0.06).next_to(gates, DOWN, 0.3)
         self.play(gates[2][0].animate.set_stroke(REFUSE), gates[2][1].animate.set_color(REFUSE), Wiggle(qc2),
                   FadeIn(why), run_time=0.7)
         self.play(FadeOut(qc2), Indicate(rows[0], color=REFUSE), run_time=0.4)
         self.hold(1.4)
-        rev = mono("→ a named human reviewer decides", 18, ACCENT).next_to(q2, DOWN, 0.3).align_to(al, LEFT)
+        rev = VGroup(mono("→ a named human", 18, ACCENT), mono("  reviewer decides", 18, ACCENT)).arrange(DOWN, aligned_edge=LEFT, buff=0.06)
+        rev.next_to(q2, DOWN, 0.25).align_to(al, LEFT)
         self.play(FadeIn(rev), run_time=0.4)
         self.outro()
 
@@ -214,12 +215,12 @@ class MedSSI(ProjectScene):
         self.hold(1.0)
 
         # ── 右：驗證方，每個情境只開放特定卡 ──
-        rx = self.x_right - 1.95
+        rx = self.x_right - 2.15
         scen = [("PHARMACY · pickup", "prescription + allergy cards", [0, 1, 2]),
                 ("RESEARCH · authorization", "condition + consent cards", [3, 4])]
         boxes = VGroup()
         for i, (nm, sub, _) in enumerate(scen):
-            b = card(3.9, 1.25).move_to([rx, cy + 1.3 - i * 2.2, 0])
+            b = card(4.3, 1.25).move_to([rx, cy + 1.3 - i * 2.2, 0])
             t1 = mono(nm, 16, TEXT).move_to(b.get_corner(UL) + [0.2, -0.3, 0], aligned_edge=LEFT)
             t2 = mono(sub, 16, ACCENT).next_to(t1, DOWN, 0.12, aligned_edge=LEFT)
             boxes.add(VGroup(b, t1, t2))
@@ -239,7 +240,7 @@ class MedSSI(ProjectScene):
                              mono("✗ unrequested field → rejected", 16, REFUSE, BOLD)).arrange(DOWN, aligned_edge=LEFT, buff=0.08)
                 ask.next_to(ial, DOWN, 0.15, aligned_edge=LEFT)
                 self.play(FadeIn(ask, shift=UP * 0.1), Indicate(rows[3], color=REFUSE), run_time=0.6)
-                self.hold(1.6)
+                self.hold(2.0)
                 self.play(FadeOut(ask), run_time=0.3)
             self.play(b.animate.set_stroke(LINE), *[r.animate.set_opacity(0.35) for r in on],
                       *[r[0].animate.set_stroke(LINE) for r in on], FadeOut(arrow), FadeOut(ial), run_time=0.35)
@@ -359,9 +360,9 @@ class PepeFi(ProjectScene):
         self.hold(1.0)
 
         # ── 下半：事件紀錄，一行一行停住 ──
-        y0 = top - 1.35
+        y0 = top - 1.2
         def entry(i, txt, why, ok):
-            mark = (tick() if ok else cross()).move_to([L + 0.25, y0 - i * 0.68, 0])
+            mark = (tick() if ok else cross()).move_to([L + 0.25, y0 - i * 0.62, 0])
             col = PASS if ok else REFUSE
             t1 = mono(txt, 18, TEXT).next_to(mark, RIGHT, 0.3).shift(UP * 0.12)
             t2 = mono(why, 16, col).next_to(t1, DOWN, 0.06, aligned_edge=LEFT)
@@ -381,7 +382,7 @@ class PepeFi(ProjectScene):
             e = entry(i, a, b, ok)
             anim = [FadeIn(e, shift=RIGHT * 0.15)]
             if m is not None:
-                anim.append(Indicate(mk[m][0], color=PASS if ok else REFUSE))
+                anim.append(Circumscribe(mk[m][0], color=PASS if ok else REFUSE, buff=0.04))
             self.play(*anim, run_time=0.5)
             self.hold(1.3)
             shown.append(e)
@@ -414,23 +415,25 @@ class RWATokenization(ProjectScene):
                        stroke_color=RULE, stroke_width=2, fill_color=PANEL2, fill_opacity=1)
         wins = VGroup(*[Rectangle(width=0.5, height=0.5, stroke_width=0, fill_color=cols[o], fill_opacity=0.8) for o in owner])
         wins.arrange_in_grid(4, 3, buff=0.2).move_to(body)
-        cap = mono("PropertyToken (ERC-20) · 12 units", 16, TEXT2).next_to(body, DOWN, 0.2).align_to(body, LEFT)
+        cap = VGroup(mono("PropertyToken (ERC-20)", 16, TEXT2), mono("12 units", 16, TEXT2)).arrange(DOWN, aligned_edge=LEFT, buff=0.06)
+        cap.next_to(body, DOWN, 0.15).align_to(body, LEFT)
         self.play(FadeIn(body), FadeIn(roof), LaggedStart(*[FadeIn(w) for w in wins], lag_ratio=0.05), FadeIn(cap), run_time=1.0)
         self.hold(0.8)
 
         # ── IdentityRegistry：owner 登記 A、B、C；D 沒登記 ──
-        cx = -1.05
-        reg = card(4.0, 2.0, ACCENT, SOFT).move_to([cx, cy + 1.05, 0])
+        cx = -0.95
+        reg = card(4.4, 2.3, ACCENT, SOFT).move_to([cx, cy + 1.0, 0])
         rt = mono("IdentityRegistry", 18).move_to(reg.get_corner(UL) + [0.2, -0.3, 0], aligned_edge=LEFT)
         call = mono("owner · registerIdentity(A, B, C)", 16, TEXT2).next_to(rt, DOWN, 0.12, aligned_edge=LEFT)
-        letters = VGroup(*[mono(h, 20, TEXT, BOLD) for h in "ABCD"]).arrange(RIGHT, buff=0.75).move_to(reg.get_bottom() + UP * 0.65)
+        letters = VGroup(*[mono(h, 20, TEXT, BOLD) for h in "ABCD"]).arrange(RIGHT, buff=0.75).move_to(reg.get_center() + DOWN * 0.05)
         self.play(FadeIn(reg), FadeIn(rt), FadeIn(call), FadeIn(letters), run_time=0.6)
         marks = {}
         for i, h in enumerate("ABC"):
             marks[h] = tick().scale(0.8).next_to(letters[i], DOWN, 0.12)
             self.play(Create(marks[h]), run_time=0.25)
-        marks["D"] = mono("not registered", 16, MUTED).next_to(letters[3], DOWN, 0.12)
-        self.play(FadeIn(marks["D"]), run_time=0.3)
+        marks["D"] = mono("–", 20, MUTED).next_to(letters[3], DOWN, 0.12)
+        dnote = mono("D · not registered", 16, MUTED).move_to(reg.get_corner(DL) + [0.2, 0.25, 0], aligned_edge=LEFT)
+        self.play(FadeIn(marks["D"]), FadeIn(dnote), run_time=0.3)
         self.hold(0.8)
 
         # ── 右：持有人表 ──
@@ -449,10 +452,10 @@ class RWATokenization(ProjectScene):
         self.hold(0.6)
 
         # ── 轉讓 A→C：代幣合約在轉帳時查雙方身分 → 成功 ──
-        above = reg.get_top() + UP * 0.28
+        above = reg.get_bottom() + DOWN * 0.4 + RIGHT * 0.9
         tok = chip("A → C · 1 unit", TEXT2, PANEL2).move_to(rows["A"][1].get_center())
         self.play(tok.animate.move_to(above), run_time=0.6)
-        ok = mono("sender ✓  receiver ✓", 16, PASS).next_to(tok, LEFT, 0.25)
+        ok = mono("sender ✓  receiver ✓", 16, PASS).next_to(tok, DOWN, 0.15)
         self.play(FadeIn(ok), Indicate(letters[0], color=PASS), Indicate(letters[2], color=PASS), run_time=0.6)
         self.play(tok.animate.move_to(rows["C"][1].get_center()), FadeOut(ok), run_time=0.6)
         self.remove(tok)
@@ -467,12 +470,12 @@ class RWATokenization(ProjectScene):
         rev = VGroup(mono("revert", 16, LABEL),
                      mono('"Receiver failed KYC/AML check"', 18, REFUSE, BOLD)).arrange(DOWN, aligned_edge=LEFT, buff=0.1)
         rev.move_to([hx, cy - 1.45, 0], aligned_edge=LEFT)
-        self.play(Wiggle(tok2), letters[3].animate.set_color(REFUSE), marks["D"].animate.set_color(REFUSE), FadeIn(rev), run_time=0.8)
+        self.play(Wiggle(tok2), letters[3].animate.set_color(REFUSE), dnote.animate.set_color(REFUSE), FadeIn(rev), run_time=0.8)
         self.hold(2.0)
-        self.play(FadeOut(tok2), FadeOut(rev), letters[3].animate.set_color(TEXT), marks["D"].animate.set_color(MUTED), run_time=0.4)
+        self.play(FadeOut(tok2), FadeOut(rev), letters[3].animate.set_color(TEXT), dnote.animate.set_color(MUTED), run_time=0.4)
 
         # ── 租金：owner 存入 → 每單位 100 → 持有人各自 claimRent() ──
-        dist = card(4.0, 1.75, ACCENT, SOFT).move_to([cx, cy - 1.25, 0])
+        dist = card(4.4, 1.6, ACCENT, SOFT).move_to([cx, cy - 1.35, 0])
         dt = mono("RentalDistributor", 18).move_to(dist.get_corner(UL) + [0.2, -0.3, 0], aligned_edge=LEFT)
         d1 = mono("owner · distributeRent(1,200)", 16, TEXT2).next_to(dt, DOWN, 0.14, aligned_edge=LEFT)
         d2 = mono("12 units → 100 per unit", 16, ACCENT).next_to(d1, DOWN, 0.12, aligned_edge=LEFT)
@@ -555,7 +558,7 @@ class QMLSimulation(ProjectScene):
 
         # ── 模型欄：ZZFeatureMap（reps=2）→ 保真度量子核 → QSVM；另有變分 QNN、QSVT-like ──
         h3 = label("quantum models", 16).move_to(h1, aligned_edge=LEFT)
-        x0, y0 = panel.get_left()[0] + 0.5, panel.get_top()[1] - 1.05
+        x0, y0 = panel.get_left()[0] + 0.5, panel.get_top()[1] - 0.95
         wires = VGroup(*[Line([x0, y0 - k * 0.6, 0], [x0 + 3.9, y0 - k * 0.6, 0], stroke_color=RULE) for k in range(2)])
 
         def gate(x, y, s, w=0.5):
@@ -568,12 +571,12 @@ class QMLSimulation(ProjectScene):
                      Dot([x, ys[0], 0], 0.07, color=ACCENT),
                      Circle(0.12, stroke_color=ACCENT, stroke_width=2.4).move_to([x, ys[1], 0]))
         circ.add(gate(x0 + 2.4, ys[1], "P(φ)", 0.7))
-        reps = mono("ZZFeatureMap · reps = 2", 16, TEXT2).next_to(wires, RIGHT, 0.25).shift(UP * 0.3)
-        kern = mono("K(x, x′) = |⟨φ(x)|φ(x′)⟩|²", 18, ACCENT).next_to(wires, DOWN, 0.35, aligned_edge=LEFT)
+        reps = mono("ZZFeatureMap · reps = 2", 16, TEXT2).next_to(wires, DOWN, 0.3, aligned_edge=LEFT)
+        kern = mono("K(x, x′) = |⟨φ(x)|φ(x′)⟩|²", 18, ACCENT).next_to(reps, DOWN, 0.2, aligned_edge=LEFT)
         models = VGroup(mono("→ QSVM  (fidelity quantum kernel)", 16, TEXT),
                         mono("→ variational QNN  (RealAmplitudes)", 16, TEXT),
                         mono("→ QSVT-like approximation", 16, TEXT)).arrange(DOWN, aligned_edge=LEFT, buff=0.16)
-        models.next_to(kern, DOWN, 0.3, aligned_edge=LEFT)
+        models.next_to(kern, DOWN, 0.22, aligned_edge=LEFT)
         self.play(*light([2, 3], False), *light([1, 3]), FadeOut(h2), FadeOut(steps), FadeOut(arrows), FadeIn(h3), run_time=0.5)
         self.play(Create(wires), LaggedStart(*[FadeIn(m) for m in circ], lag_ratio=0.04), FadeIn(reps), run_time=0.9)
         self.play(FadeIn(kern), run_time=0.4)
