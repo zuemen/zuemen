@@ -35,5 +35,5 @@
 <text x="802" y="303" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">quantum machine learning</text>
 <line x1="56" y1="326" x2="1144" y2="326" stroke="#222228"/>
 <circle cx="60" cy="348" r="3.5" fill="#8cc9a1"><animate attributeName="opacity" values="1;.25;1" dur="2s" repeatCount="indefinite"/></circle>
-<text x="72" y="352" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">base-sepolia #53,019,542  ·  BTC VaR95 2.68%  ·  updated 2026-11-01 17:36 UTC+8</text>
+<text x="72" y="352" font-family="JetBrains Mono,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="11" fill="#8a8a93">base-sepolia #53,019,738  ·  BTC VaR95 2.68%  ·  updated 2026-11-01 17:36 UTC+8</text>
 </svg>
