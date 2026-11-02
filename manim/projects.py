@@ -446,7 +446,7 @@ class RWATokenization(ProjectScene):
         cap = VGroup(mono("PropertyToken (ERC-20)", 16, TEXT2), mono("12 units", 16, TEXT2)).arrange(DOWN, aligned_edge=LEFT, buff=0.06)
         cap.next_to(body, DOWN, 0.15).align_to(body, LEFT)
         self.play(FadeIn(body), FadeIn(roof), LaggedStart(*[FadeIn(w) for w in wins], lag_ratio=0.05), FadeIn(cap), run_time=1.0)
-        self.hold(0.8)
+        self.hold(1.2)
 
         # ── IdentityRegistry：owner 登記 A、B、C；D 沒登記 ──
         cx = -0.95
@@ -462,7 +462,7 @@ class RWATokenization(ProjectScene):
         marks["D"] = mono("–", 20, MUTED).next_to(letters[3], DOWN, 0.12)
         dnote = mono("D · not registered", 16, MUTED).move_to(reg.get_corner(DL) + [0.2, 0.25, 0], aligned_edge=LEFT)
         self.play(FadeIn(marks["D"]), FadeIn(dnote), run_time=0.3)
-        self.hold(0.8)
+        self.hold(1.3)
 
         # ── 右：持有人表 ──
         hx = 1.55
@@ -477,7 +477,7 @@ class RWATokenization(ProjectScene):
             rows[h] = VGroup(sw, mono(f"holder {h}", 18, TEXT2).next_to(sw, RIGHT, 0.2))
             unum[h] = mono(str(units[h]), 20).move_to([hx + 3.0, y, 0], aligned_edge=RIGHT)
         self.play(FadeIn(hdr), *[FadeIn(r) for r in rows.values()], *[FadeIn(u) for u in unum.values()], run_time=0.5)
-        self.hold(0.6)
+        self.hold(1.1)
 
         # ── 轉讓 A→C：代幣合約在轉帳時查雙方身分 → 成功 ──
         above = reg.get_bottom() + DOWN * 0.4 + RIGHT * 0.6
@@ -490,7 +490,7 @@ class RWATokenization(ProjectScene):
         self.play(wins[5].animate.set_fill(WARN),
                   Transform(unum["A"], mono("5", 20, TEXT, BOLD).move_to(unum["A"], aligned_edge=RIGHT)),
                   Transform(unum["C"], mono("3", 20, TEXT, BOLD).move_to(unum["C"], aligned_edge=RIGHT)), run_time=0.5)
-        self.hold(0.6)
+        self.hold(1.2)
 
         # ── 轉讓 A→D：D 沒登記 → 代幣合約自己 revert（合約原字） ──
         tok2 = chip("A → D · 1 unit", REFUSE).move_to(rows["A"][1].get_center())
@@ -509,7 +509,7 @@ class RWATokenization(ProjectScene):
         d2 = mono("12 units → 100 per unit", 16, ACCENT).next_to(d1, DOWN, 0.12, aligned_edge=LEFT)
         self.play(FadeIn(dist), FadeIn(dt), FadeIn(d1), run_time=0.5)
         self.play(FadeIn(d2, shift=UP * 0.1), run_time=0.4)
-        self.hold(0.8)
+        self.hold(1.3)
         for h, amt in (("A", 500), ("B", 400), ("C", 300)):
             c = chip(f"{h} · claimRent()", cols[h], BG, 16).move_to([hx + 2.4, dist.get_y(), 0])
             self.play(FadeIn(c, shift=LEFT * 0.1), run_time=0.2)
